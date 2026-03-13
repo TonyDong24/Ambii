@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C sharp learning\\Ambii\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\c sharp learning\\ambii\\views\\startview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\startview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\c sharp learning\\ambii\\views\\startview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\startview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\c sharp learning\\ambii\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\c sharp learning\\ambii\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\c sharp learning\\ambii\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\C sharp learning\\Ambii\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "D:\\C sharp learning\\Ambii\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-13T08:16:34.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StartView.xaml.cs",
+              "DocumentMoniker": "D:\\C sharp learning\\Ambii\\Views\\StartView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\StartView.xaml.cs",
+              "ToolTip": "D:\\C sharp learning\\Ambii\\Views\\StartView.xaml.cs",
+              "RelativeToolTip": "Views\\StartView.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwBgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:07:48.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StartView.xaml",
+              "DocumentMoniker": "D:\\C sharp learning\\Ambii\\Views\\StartView.xaml",
+              "RelativeDocumentMoniker": "Views\\StartView.xaml",
+              "ToolTip": "D:\\C sharp learning\\Ambii\\Views\\StartView.xaml*",
+              "RelativeToolTip": "Views\\StartView.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-13T08:07:19.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\C sharp learning\\Ambii\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "D:\\C sharp learning\\Ambii\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAUwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:01:36.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\C sharp learning\\Ambii\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "D:\\C sharp learning\\Ambii\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-13T06:44:18.87Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
