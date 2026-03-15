@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Hxy5VDsnNEw=",
+  "dgSpecHash": "Kk+/Rfue0QU=",
   "success": true,
-  "projectFilePath": "D:\\C sharp learning\\Ambii\\Ambii.csproj",
+  "projectFilePath": "E:\\Photobooth script\\Ambii\\Ambii.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\tony_dong\\.nuget\\packages\\materialdesigncolors\\5.3.0\\materialdesigncolors.5.3.0.nupkg.sha512",
-    "C:\\Users\\tony_dong\\.nuget\\packages\\materialdesignthemes\\5.3.0\\materialdesignthemes.5.3.0.nupkg.sha512",
-    "C:\\Users\\tony_dong\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.77\\microsoft.xaml.behaviors.wpf.1.1.77.nupkg.sha512"
+    "C:\\Users\\pc\\.nuget\\packages\\materialdesigncolors\\5.3.0\\materialdesigncolors.5.3.0.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\materialdesignthemes\\5.3.0\\materialdesignthemes.5.3.0.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.77\\microsoft.xaml.behaviors.wpf.1.1.77.nupkg.sha512"
   ],
   "logs": []
 }

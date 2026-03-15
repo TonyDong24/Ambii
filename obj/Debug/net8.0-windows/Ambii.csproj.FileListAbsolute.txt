@@ -26,3 +26,34 @@ D:\C sharp learning\Ambii\obj\Debug\net8.0-windows\ref\Ambii.dll
 D:\C sharp learning\Ambii\obj\Debug\net8.0-windows\Views\StartView.baml
 D:\C sharp learning\Ambii\obj\Debug\net8.0-windows\Views\StartView.g.cs
 D:\C sharp learning\Ambii\obj\Debug\net8.0-windows\App.baml
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Ambii.exe
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Ambii.deps.json
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Ambii.runtimeconfig.json
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Ambii.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Ambii.pdb
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\MaterialDesignColors.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\MaterialDesignThemes.Wpf.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Microsoft.Xaml.Behaviors.dll
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.csproj.AssemblyReference.cache
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\MainWindow.baml
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\StartView.baml
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\App.baml
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\MainWindow.g.cs
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\StartView.g.cs
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\App.g.cs
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii_Content.g.cs
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii_MarkupCompile.cache
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.g.resources
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.GeneratedMSBuildEditorConfig.editorconfig
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.AssemblyInfoInputs.cache
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.AssemblyInfo.cs
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.csproj.CoreCompileInputs.cache
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.sourcelink.json
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.csproj.Up2Date
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.dll
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\refint\Ambii.dll
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.pdb
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.genruntimeconfig.cache
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\ref\Ambii.dll
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\SettingsWindow.baml
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\SettingsWindow.g.cs

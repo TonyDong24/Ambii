@@ -18,8 +18,12 @@ namespace Ambii.Views
         }
         private void BtnAdminSetting_Click(object sender, RoutedEventArgs e)
         {
-            // Tạm thời hiển thị thông báo để test
-            MessageBox.Show("Chào Admin! Chức năng cấu hình hệ thống đang được phát triển.");
+            SettingsWindow settingsWindow = new SettingsWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
+
+            settingsWindow.ShowDialog();
         }
     }
 }

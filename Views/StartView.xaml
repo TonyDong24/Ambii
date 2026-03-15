@@ -6,7 +6,49 @@
              Background="Black">
 
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Image Source="pack://application:,,,/Assets/darkstyle.jpg"
+       Width="250"
+       Height="250"
+       Stretch="Uniform"
+       HorizontalAlignment="Center" 
+       VerticalAlignment="Center"
+       Margin="300,0,0,500" 
+       Panel.ZIndex="1"
+       RenderTransformOrigin="0.5,0.5">
+
+            <Image.RenderTransform>
+                <TranslateTransform x:Name="LogoFloating" Y="0" />
+            </Image.RenderTransform>
+
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Image.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="LogoFloating"
+                                     Storyboard.TargetProperty="Y"
+                                     From="-5" 
+                                     To="5" 
+                                     Duration="0:0:2" 
+                                     AutoReverse="True" 
+                                     RepeatBehavior="Forever">
+                                <DoubleAnimation.EasingFunction>
+                                    <CubicEase EasingMode="EaseInOut"/>
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                     From="0.7" 
+                                     To="1.0" 
+                                     Duration="0:0:2" 
+                                     AutoReverse="True" 
+                                     RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+        </Image>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Panel.ZIndex="2">
             <TextBlock Text="AMBII" 
            FontSize="200" FontWeight="Black" FontStyle="Italic" Foreground="White" 
            HorizontalAlignment="Center">
@@ -26,26 +68,43 @@
                     </EventTrigger>
                 </TextBlock.Triggers>
             </TextBlock>
-            
 
-            <TextBlock Text="Keep story in your pocket" 
-                       FontSize="30" 
+
+            <TextBlock Text="Keep your story in pocket" 
+                       FontFamily="pack://application:,,,/Assets/Fonts/#Rouge Script"
+                       FontSize="60" 
                        FontWeight="Bold"
                        FontStyle="Italic"
-                       Foreground="#444444" 
+                       Foreground="DarkGray" 
                        HorizontalAlignment="Center" 
-                       Margin="500,0,0,100"/>
+                       Margin="300,-40,0,70"/>
             <Button x:Name="BtnStart" 
-                    Click="BtnStart_Click"
-                    Width="280" Height="80" 
-                    Background="White" Foreground="Black" 
-                    BorderBrush="White" Cursor="Hand"
-                    RenderTransformOrigin="0.5,0.5"
-                    materialDesign:ButtonAssist.CornerRadius="40">
+        Click="BtnStart_Click"
+        Width="280" Height="80" 
+        Background="White" Foreground="Black" 
+        Cursor="Hand"
+        RenderTransformOrigin="0.5,0.5"
+        materialDesign:ButtonAssist.CornerRadius="40">
+
+                <Button.BorderBrush>
+                    <LinearGradientBrush x:Name="NeonBorder" StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="Cyan" Offset="0.0" />
+                        <GradientStop Color="Transparent" Offset="0.25" />
+                        <GradientStop Color="DeepPink" Offset="0.5" />
+                        <GradientStop Color="Transparent" Offset="0.75" />
+                        <GradientStop Color="Cyan" Offset="1.0" />
+
+                        <LinearGradientBrush.RelativeTransform>
+                            <RotateTransform x:Name="BorderRotate" CenterX="0.5" CenterY="0.5" Angle="0" />
+                        </LinearGradientBrush.RelativeTransform>
+                    </LinearGradientBrush>
+                </Button.BorderBrush>
+
+                <Button.BorderThickness>3</Button.BorderThickness>
 
                 <Button.Effect>
-                    <DropShadowEffect Color="LightGray" 
-                          BlurRadius="15" 
+                    <DropShadowEffect x:Name="NeonGlow" Color="Cyan" 
+                          BlurRadius="20" 
                           ShadowDepth="0" 
                           Opacity="0.8"/>
                 </Button.Effect>
@@ -54,23 +113,30 @@
                     <ScaleTransform x:Name="ButtonScale" ScaleX="1" ScaleY="1" />
                 </Button.RenderTransform>
 
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="40"/>
-                    </Style>
-                </Button.Resources>
-
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Loaded">
                         <BeginStoryboard>
                             <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="BorderRotate"
+                                     Storyboard.TargetProperty="Angle"
+                                     From="0" To="360" Duration="0:0:2"
+                                     RepeatBehavior="Forever" />
+
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="NeonGlow"
+                                                   Storyboard.TargetProperty="Color"
+                                                   Duration="0:0:4" RepeatBehavior="Forever">
+                                    <LinearColorKeyFrame Value="Cyan" KeyTime="0:0:0" />
+                                    <LinearColorKeyFrame Value="DeepPink" KeyTime="0:0:2" />
+                                    <LinearColorKeyFrame Value="Cyan" KeyTime="0:0:4" />
+                                </ColorAnimationUsingKeyFrames>
+
                                 <DoubleAnimation Storyboard.TargetName="ButtonScale" 
                                      Storyboard.TargetProperty="ScaleX"
-                                     From="1.0" To="1.1" Duration="0:0:0.8" 
+                                     From="1.0" To="1.05" Duration="0:0:0.8" 
                                      AutoReverse="True" RepeatBehavior="Forever" />
                                 <DoubleAnimation Storyboard.TargetName="ButtonScale" 
                                      Storyboard.TargetProperty="ScaleY"
-                                     From="1.0" To="1.1" Duration="0:0:0.8" 
+                                     From="1.0" To="1.05" Duration="0:0:0.8" 
                                      AutoReverse="True" RepeatBehavior="Forever" />
                             </Storyboard>
                         </BeginStoryboard>
@@ -92,10 +158,11 @@
                         Padding="0"
                         Style="{StaticResource MaterialDesignFlatButton}">
 
-    <materialDesign:PackIcon Kind="Cog" 
-                             Width="35" 
-                             Height="35" 
-                             Foreground="LightGray"/>
-</Button>
+            <materialDesign:PackIcon Kind="Cog" 
+                                     Width="35" 
+                                     Height="35"
+                                     Opacity="0.1"                                 
+                                     Foreground="LightGray"/>   
+        </Button>
     </Grid>
 </UserControl>
