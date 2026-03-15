@@ -8,5 +8,9 @@
         public bool AutoPrint { get; set; } = false;
         public string SaveFolder { get; set; } = "Photos";
         public bool MirrorPreview { get; set; } = true;
+        public double Brightness { get; set; } = 0;
+        public double Contrast { get; set; } = 1;
+        public double Saturation { get; set; } = 1;
+        public double Sharpness { get; set; } = 0;
     }
 }
