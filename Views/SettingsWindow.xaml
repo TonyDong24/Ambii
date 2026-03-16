@@ -2,189 +2,92 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Settings"
-        Width="691"
-        Height="650"
-        WindowStartupLocation="CenterOwner"
-        ResizeMode="NoResize"
-        Background="Transparent"
-        Foreground="White"
-        WindowStyle="None"
-        AllowsTransparency="True">
+        Title="Settings" Width="691" Height="650"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="Transparent" Foreground="White"
+        WindowStyle="None" AllowsTransparency="True">
 
-    <Border Background="#181818"
-            CornerRadius="24"
-            BorderBrush="#333333"
-            BorderThickness="1"
-            Padding="15">
-
+    <Border Background="#181818" CornerRadius="24" BorderBrush="#333333" BorderThickness="1" Padding="15">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
 
-            <!-- Header -->
-            <Grid Grid.Row="0" Margin="0,0,0,20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+            <Grid x:Name="MainSettingsContent" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                <TextBlock Text="Admin Settings"
-                           FontSize="28"
-                           FontWeight="Bold"
-                           VerticalAlignment="Center"/>
+                <Grid Grid.Row="0" Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Admin Settings" FontSize="28" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <Button Grid.Column="1" Content="✕" Width="60" Height="60" Click="BtnClose_Click"
+                            Background="Transparent" Foreground="White" BorderBrush="Transparent" FontSize="20" Cursor="Hand"/>
+                </Grid>
 
-                <Button Grid.Column="1"
-                        Content="✕"
-                        Width="60"
-                        Height="60"
-                        Margin="0,0,0,0"
-                        Click="BtnClose_Click"
-                        Background="Transparent"
-                        Foreground="White"
-                        BorderBrush="Transparent"
-                        FontSize="20"
-                        Cursor="Hand"/>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <TextBlock Text="Camera" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                        <ComboBox x:Name="CmbCamera" Height="40" Margin="0,0,0,20" Background="#222222" Foreground="DarkGray" BorderBrush="#444444"/>
+
+                        <TextBlock Text="Countdown Seconds" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                        <ComboBox x:Name="CmbCountdown" Height="40" Margin="0,0,0,20" Background="#222222" Foreground="DarkGray" BorderBrush="#444444">
+                            <ComboBoxItem Content="3"/>
+                            <ComboBoxItem Content="5"/>
+                            <ComboBoxItem Content="7"/>
+                            <ComboBoxItem Content="10"/>
+                        </ComboBox>
+
+                        <TextBlock Text="Number of Photos" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                        <ComboBox x:Name="CmbPhotoCount" Height="40" Margin="0,0,0,20" Background="#222222" Foreground="DarkGray" BorderBrush="#444444">
+                            <ComboBoxItem Content="2"/>
+                            <ComboBoxItem Content="4"/>
+                            <ComboBoxItem Content="6"/>
+                        </ComboBox>
+
+                        <TextBlock Text="Save Folder" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                        <Grid Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="TxtSaveFolder" Grid.Column="0" Height="40" Padding="10,0" Background="#222222" Foreground="White" BorderBrush="#444444" VerticalContentAlignment="Center" Text="Photos"/>
+                            <Button Grid.Column="1" Height="40" Margin="8,0,0,0" Click="BtnBrowseFolder_Click" Cursor="Hand" Background="#2A2A2A" BorderBrush="#444444" Foreground="White" FontSize="18">📁</Button>
+                        </Grid>
+
+                        <CheckBox x:Name="ChkAutoPrint" Content="Enable Auto Print" Margin="0,0,0,15" FontSize="16"/>
+                        <CheckBox x:Name="ChkMirrorPreview" Content="Mirror Camera Preview" Margin="0,0,0,15" FontSize="16"/>
+                        <CheckBox x:Name="ChkDebugMode" 
+                                          Content="Enable Debug Mode (Show Back Button)" 
+                                          Margin="0,0,0,15" 
+                                          FontSize="16"
+                                          Foreground="#25F4EE"/>    
+                    </StackPanel>
+                </ScrollViewer>
+
+                <Grid Grid.Row="2" Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Content="CANCEL" Width="140" Height="50" Margin="0,0,12,0" Click="BtnClose_Click" Background="#2A2A2A" Foreground="White" BorderBrush="#444444" FontSize="18" FontWeight="Bold" materialDesign:ButtonAssist.CornerRadius="25"/>
+                    <Button Grid.Column="2" Content="SAVE" Width="140" Height="50" Click="BtnSave_Click" Background="White" Foreground="Black" BorderBrush="White" FontSize="18" FontWeight="Bold" materialDesign:ButtonAssist.CornerRadius="25"/>
+                </Grid>
             </Grid>
 
-            <!-- Content -->
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                <StackPanel>
-
-                    <TextBlock Text="Camera"
-                               FontSize="18"
-                               FontWeight="SemiBold"
-                               Margin="0,0,0,10"/>
-
-                    <ComboBox x:Name="CmbCamera"
-                              Height="40"
-                              Margin="0,0,0,20"
-                              Background="#222222"
-                              Foreground="DarkGray"
-                              BorderBrush="#444444"/>
-
-                    <TextBlock Text="Countdown Seconds"
-                               FontSize="18"
-                               FontWeight="SemiBold"
-                               Margin="0,0,0,10"/>
-
-                    <ComboBox x:Name="CmbCountdown"
-                              Height="40"
-                              Margin="0,0,0,20"
-                              Background="#222222"
-                              Foreground="DarkGray"
-                              BorderBrush="#444444">
-                        <ComboBoxItem Content="3"/>
-                        <ComboBoxItem Content="5"/>
-                        <ComboBoxItem Content="7"/>
-                        <ComboBoxItem Content="10"/>
-                    </ComboBox>
-
-                    <TextBlock Text="Number of Photos"
-                               FontSize="18"
-                               FontWeight="SemiBold"
-                               Margin="0,0,0,10"/>
-
-                    <ComboBox x:Name="CmbPhotoCount"
-                              Height="40"
-                              Margin="0,0,0,20"
-                              Background="#222222"
-                              Foreground="DarkGray"
-                              BorderBrush="#444444">
-                        <ComboBoxItem Content="2"/>
-                        <ComboBoxItem Content="4"/>
-                        <ComboBoxItem Content="6"/>
-                    </ComboBox>
-
-                    <TextBlock Text="Save Folder"
-           FontSize="18"
-           FontWeight="SemiBold"
-           Margin="0,0,0,10"/>
-
-                    <Grid Margin="0,0,0,20">
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-
-                        <!-- TEXTBOX -->
-                        <TextBox x:Name="TxtSaveFolder"
-             Grid.Column="0"
-             Height="40"
-             Padding="10,0"
-             Background="#222222"
-             Foreground="White"
-             BorderBrush="#444444"
-             VerticalContentAlignment="Center"
-             Text="Photos"/>
-
-                        <!-- BROWSE BUTTON -->
-                        <Button Grid.Column="1"
-            Height="40"
-            Margin="8,0,0,0"
-            Click="BtnBrowseFolder_Click"
-            Cursor="Hand"
-            Background="#2A2A2A"
-            BorderBrush="#444444"
-            Foreground="White"
-            FontSize="18">
-                            📁
-                        </Button>
-
-                    </Grid>
-
-                    <CheckBox x:Name="ChkAutoPrint"
-                              Content="Enable Auto Print"
-                              Margin="0,0,0,15"
-                              FontSize="16"/>
-
-                    <CheckBox x:Name="ChkMirrorPreview"
-                              Content="Mirror Camera Preview"
-                              Margin="0,0,0,15"
-                              FontSize="16"/>
-
+            <Border x:Name="LoginOverlay" Visibility="Visible" Background="#181818" CornerRadius="20">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+                    <materialDesign:PackIcon Kind="ShieldLock" Foreground="#FE2C55" Width="60" Height="60" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                    <TextBlock Text="ADMIN ACCESS" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+                    <PasswordBox x:Name="TxtAdminPassword" materialDesign:HintAssist.Hint="Enter Admin Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Foreground="White" FontSize="18" Margin="0,0,0,30" KeyDown="TxtAdminPassword_KeyDown"/>
+                    <Button Content="UNLOCK SETTINGS" Height="50" Click="BtnLogin_Click" Background="#FE2C55" Foreground="White" BorderThickness="0" FontSize="16" FontWeight="Bold" materialDesign:ButtonAssist.CornerRadius="25"/>
+                    <Button Content="EXIT" Click="BtnClose_Click" Margin="0,15,0,0" Foreground="Gray" Style="{StaticResource MaterialDesignFlatButton}"/>
                 </StackPanel>
-            </ScrollViewer>
+            </Border>
 
-            <!-- Footer -->
-            <Grid Grid.Row="2" Margin="0,20,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <Button Grid.Column="1"
-                        Content="CANCEL"
-                        Width="140"
-                        Height="50"
-                        Margin="0,0,12,0"
-                        Click="BtnClose_Click"
-                        Background="#2A2A2A"
-                        Foreground="White"
-                        BorderBrush="#444444"
-                        Cursor="Hand"
-                        FontSize="18"
-                        FontWeight="Bold"
-                        materialDesign:ButtonAssist.CornerRadius="25"/>
-
-                <Button Grid.Column="2"
-                        Content="SAVE"
-                        Width="140"
-                        Height="50"
-                        Click="BtnSave_Click"
-                        Background="White"
-                        Foreground="Black"
-                        BorderBrush="White"
-                        Cursor="Hand"
-                        FontSize="18"
-                        FontWeight="Bold"
-                        materialDesign:ButtonAssist.CornerRadius="25"/>
-            </Grid>
         </Grid>
     </Border>
 </Window>

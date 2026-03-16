@@ -12,5 +12,7 @@
         public double Contrast { get; set; } = 1;
         public double Saturation { get; set; } = 1;
         public double Sharpness { get; set; } = 0;
+        public string AdminPassword { get; set; } = "1234";
+        public bool IsDebugMode { get; set; } = false;
     }
 }

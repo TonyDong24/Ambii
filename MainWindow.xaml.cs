@@ -1,42 +1,56 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Ambii.Views; // Đảm bảo bạn đã tạo thư mục Views
+using System.Threading.Tasks;
+using Ambii.Views;
+using Ambii.Services; // Thêm để dùng SettingsService
 
 namespace Ambii
 {
     public partial class MainWindow : Window
     {
-        // Tạo một biến static để các màn hình con có thể gọi MainWindow dễ dàng
         public static MainWindow Instance { get; private set; }
+        public bool IsCameraReady { get; set; } = false;
 
         public MainWindow()
         {
             InitializeComponent();
             Instance = this;
+
+            // 1. Chuyển sang StartView ngay khi mở
             this.Navigate(new StartView());
 
-            // Tạm thời để trống, sau khi tạo xong StartView mình sẽ quay lại đây
+            // 2. Khởi tạo Camera ngầm
+            StartCameraInitialization();
+
+            // 3. Đăng ký bắt sự kiện phím nhấn xuống cho toàn bộ cửa sổ này
+            this.KeyDown += Window_KeyDown;
         }
 
-        // Hàm dùng để đổi màn hình
+        private async void StartCameraInitialization()
+        {
+            await Task.Delay(3000); // Giả lập load camera
+            IsCameraReady = true;
+        }
+
         public void Navigate(UserControl nextView)
         {
             MainContentHolder.Content = nextView;
         }
 
-        private void ExitApp_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        // 4. Xử lý ESC để thoát toàn bộ ứng dụng
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            // Kiểm tra nếu phím vừa nhấn là ESC
             if (e.Key == System.Windows.Input.Key.Escape)
             {
-                // Đóng toàn bộ ứng dụng ngay lập tức
-                System.Windows.Application.Current.Shutdown();
+                // Chỉ cho thoát bằng ESC khi đang bật Debug Mode (để khách không phá được)
+                var settings = SettingsService.Load();
+                if (settings != null && settings.IsDebugMode)
+                {
+                    Application.Current.Shutdown();
+                }
             }
         }
 
+        // Bạn có thể xóa hẳn hàm ExitApp_Click này đi vì không dùng nút nữa
     }
 }

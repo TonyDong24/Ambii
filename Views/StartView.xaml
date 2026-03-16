@@ -104,7 +104,7 @@
 
                 <Button.Effect>
                     <DropShadowEffect x:Name="NeonGlow" Color="Cyan" 
-                          BlurRadius="20" 
+                          BlurRadius="30" 
                           ShadowDepth="0" 
                           Opacity="0.8"/>
                 </Button.Effect>

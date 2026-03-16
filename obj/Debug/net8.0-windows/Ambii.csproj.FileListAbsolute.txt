@@ -57,3 +57,39 @@ E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii.genruntimeconfig.cache
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\ref\Ambii.dll
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\SettingsWindow.baml
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\SettingsWindow.g.cs
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Ambii.exe
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Ambii.deps.json
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Ambii.runtimeconfig.json
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Ambii.dll
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Ambii.pdb
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\MaterialDesignColors.dll
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\MaterialDesignThemes.Wpf.dll
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Microsoft.Xaml.Behaviors.dll
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.csproj.AssemblyReference.cache
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\MainWindow.baml
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\SettingsWindow.baml
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\StartView.baml
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\App.baml
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\MainWindow.g.cs
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\SettingsWindow.g.cs
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\StartView.g.cs
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\App.g.cs
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii_Content.g.cs
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii_MarkupCompile.cache
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.g.resources
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.GeneratedMSBuildEditorConfig.editorconfig
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.AssemblyInfoInputs.cache
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.AssemblyInfo.cs
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.csproj.CoreCompileInputs.cache
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.sourcelink.json
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.csproj.Up2Date
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.dll
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\refint\Ambii.dll
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.pdb
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.genruntimeconfig.cache
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\ref\Ambii.dll
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\AForge.dll
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\AForge.Video.dll
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\AForge.Video.DirectShow.dll
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.baml
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.g.cs

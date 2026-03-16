@@ -12,10 +12,5 @@
 
     <Grid>
         <ContentControl x:Name="MainContentHolder" />
-
-        <Button Content="EXIT" 
-                VerticalAlignment="Top" HorizontalAlignment="Right" 
-                Click="ExitApp_Click"
-                Background="Transparent" Foreground="#222" BorderBrush="Transparent"/>
     </Grid>
 </Window>
