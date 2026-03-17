@@ -9,7 +9,7 @@
 
     <Border Background="#181818" CornerRadius="24" BorderBrush="#333333" BorderThickness="1" Padding="15">
         <Grid>
-
+            <!--Visibility="Collapsed", đổi sang Visibility="Visible" đẻ preview -->
             <Grid x:Name="MainSettingsContent" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -78,6 +78,7 @@
                 </Grid>
             </Grid>
 
+            <!--Đây là phần overlay đăng nhập,Visibility="Visible", đổi sang Visibility="Collapsed" nếu muốn hiện layer dưới -->
             <Border x:Name="LoginOverlay" Visibility="Visible" Background="#181818" CornerRadius="20">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
                     <materialDesign:PackIcon Kind="ShieldLock" Foreground="#FE2C55" Width="60" Height="60" HorizontalAlignment="Center" Margin="0,0,0,20"/>

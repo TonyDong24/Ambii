@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ambii")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4c8c985300445d3cd7d07ed09d684f5a65e1b59")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9843f33aa02cf973007893a5720bd9ee6afc97c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ambii")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ambii")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

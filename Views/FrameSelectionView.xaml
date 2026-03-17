@@ -7,15 +7,20 @@
 
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Pick up your style"
+            <TextBlock Text="Pick Up Your Frame"
+                       Foreground="WhiteSmoke"
                        FontFamily="pack://application:,,,/Assets/Fonts/#Rouge Script"
-                       FontSize="100" FontWeight="Black" 
-                       HorizontalAlignment="Center" Margin="0,100,0,50">
+                       FontSize="150" FontWeight="Heavy" 
+                       HorizontalAlignment="Center" Margin="0,50,0,50">
                 <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+                    <DropShadowEffect BlurRadius="5" Color="LightGray" ShadowDepth="0"/>
                 </TextBlock.Effect>
 
             </TextBlock>
+            <Button x:Name="BtnBack" 
+                    Content="BACK" Width="150" 
+                    Style="{StaticResource MaterialDesignOutlinedButton}" 
+                    BorderBrush="Gray" Foreground="Gray" Click="BtnBack_Click"/>
 
             <StackPanel Orientation="Horizontal">
 
@@ -23,7 +28,7 @@
                         Width="300" Height="450" Margin="20" Click="FrameSelected_Click" Tag="ClassicStrip">
                     <Border Background="#1A1A1A" CornerRadius="15" BorderThickness="2" BorderBrush="#25F4EE">
                         <StackPanel VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="ViewColumn" Width="80" Height="80" HorizontalAlignment="Center" Foreground="#25F4EE"/>
+                            <materialDesign:PackIcon Kind="ViewColumn" Width="180" Height="380" HorizontalAlignment="Center" Foreground="#25F4EE"/>
                             <TextBlock Text="CLASSIC STRIP" FontWeight="Bold" Margin="0,20,0,0" HorizontalAlignment="Center"/>
                             <TextBlock Text="3 Photos - 2x6 inch" Foreground="Gray" HorizontalAlignment="Center"/>
                         </StackPanel>
@@ -34,7 +39,7 @@
                         Width="300" Height="450" Margin="20" Click="FrameSelected_Click" Tag="Grid4">
                     <Border Background="#1A1A1A" CornerRadius="15" BorderThickness="2" BorderBrush="#FE2C55">
                         <StackPanel VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="ViewGrid" Width="80" Height="80" HorizontalAlignment="Center" Foreground="#FE2C55"/>
+                            <materialDesign:PackIcon Kind="ViewGrid" Width="180" Height="380" HorizontalAlignment="Center" Foreground="#FE2C55"/>
                             <TextBlock Text="GRID 4" FontWeight="Bold" Margin="0,20,0,0" HorizontalAlignment="Center"/>
                             <TextBlock Text="4 Photos - 4x6 inch" Foreground="Gray" HorizontalAlignment="Center"/>
                         </StackPanel>
@@ -45,7 +50,7 @@
                         Width="300" Height="450" Margin="20" Click="FrameSelected_Click" Tag="Single">
                     <Border Background="#1A1A1A" CornerRadius="15" BorderThickness="2" BorderBrush="#9B30FF">
                         <StackPanel VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="ImageOutline" Width="80" Height="80" HorizontalAlignment="Center" Foreground="#9B30FF"/>
+                            <materialDesign:PackIcon Kind="ImageOutline" Width="180" Height="380" HorizontalAlignment="Center" Foreground="#9B30FF"/>
                             <TextBlock Text="SINGLE SHOT" FontWeight="Bold" Margin="0,20,0,0" HorizontalAlignment="Center"/>
                             <TextBlock Text="1 Photo - Large Size" Foreground="Gray" HorizontalAlignment="Center"/>
                         </StackPanel>
@@ -53,12 +58,8 @@
                 </Button>
 
             </StackPanel>
-
-            <Button x:Name="BtnBack" 
-                    Content="BACK" Margin="0,50,0,0" Width="150" 
-                    Style="{StaticResource MaterialDesignOutlinedButton}" 
-                    BorderBrush="Gray" Foreground="Gray" Click="BtnBack_Click"/>
-            <Button x:Name="BtnNext" 
+            <Button x:Name="BtnNext"
+                    Opacity="0.2"
                     Click="BtnNext_Click"
                     Width="280" Height="80" 
                     Background="White" Foreground="Black" 

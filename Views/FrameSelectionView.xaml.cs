@@ -64,7 +64,7 @@ namespace Ambii.Views
             }
 
             // Thông báo Start thành công như bạn muốn
-            MessageBox.Show("Khởi động Camera thành công!", "Ambii Photobooth");
+            DarkMsg.Show("Ambii Photobooth", "Khởi động Camera thành công!");
 
             // Chuyển sang màn hình chụp (Khi bạn đã tạo CaptureView)
             // var captureWindow = new CaptureView(_selectedFrame);
