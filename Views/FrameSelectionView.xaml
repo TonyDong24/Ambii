@@ -1,71 +1,262 @@
-﻿<Window x:Class="Ambii.Views.FrameSelectionView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Select Your Frame" WindowState="Maximized" 
-        WindowStyle="None" Background="#121212" Foreground="White">
+﻿<UserControl x:Class="Ambii.Views.FrameSelectionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920"
+             Background="#121212" Foreground="White">
+
 
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Pick Up Your Frame"
-                       Foreground="WhiteSmoke"
-                       FontFamily="pack://application:,,,/Assets/Fonts/#Rouge Script"
-                       FontSize="150" FontWeight="Heavy" 
-                       HorizontalAlignment="Center" Margin="0,50,0,50">
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="5" Color="LightGray" ShadowDepth="0"/>
-                </TextBlock.Effect>
+        <Grid>
+            <Grid.Background>
+                <RadialGradientBrush Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                    <GradientStop Color="#1A1A2E" Offset="0"/>
+                    <GradientStop Color="#0A0A0F" Offset="1"/>
+                </RadialGradientBrush>
+            </Grid.Background>
 
-            </TextBlock>
-            <Button x:Name="BtnBack" 
-                    Content="BACK" Width="150" 
-                    Style="{StaticResource MaterialDesignOutlinedButton}" 
-                    BorderBrush="Gray" Foreground="Gray" Click="BtnBack_Click"/>
+            <Border IsHitTestVisible="False">
+                <Border.Background>
+                    <RadialGradientBrush x:Name="AnimatedGlow" Center="0.5, 1" GradientOrigin="0.5, 1" 
+                             RadiusX="0.9" RadiusY="0.5" Opacity="0.4">
+                        <GradientStop x:Name="ColorSpot" Color="#2ECC71" Offset="0"/>
+                        <GradientStop x:Name="MidSpot" Color="#15605E" Offset="0.5"/>
+                        <GradientStop Color="Transparent" Offset="1"/>
+                    </RadialGradientBrush>
+                </Border.Background>
 
-            <StackPanel Orientation="Horizontal">
+                <Border.Triggers>
+                    <EventTrigger RoutedEvent="Border.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="ColorSpot" 
+                                    Storyboard.TargetProperty="Color"
+                                    From="#2ECC71" To="#9B30FF" 
+                                    Duration="0:0:8" AutoReverse="True" RepeatBehavior="Forever"/>
 
-                <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                        Width="300" Height="450" Margin="20" Click="FrameSelected_Click" Tag="ClassicStrip">
-                    <Border Background="#1A1A1A" CornerRadius="15" BorderThickness="2" BorderBrush="#25F4EE">
-                        <StackPanel VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="ViewColumn" Width="180" Height="380" HorizontalAlignment="Center" Foreground="#25F4EE"/>
-                            <TextBlock Text="CLASSIC STRIP" FontWeight="Bold" Margin="0,20,0,0" HorizontalAlignment="Center"/>
-                            <TextBlock Text="3 Photos - 2x6 inch" Foreground="Gray" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Border>
-                </Button>
+                                <DoubleAnimation Storyboard.TargetName="MidSpot" 
+                                     Storyboard.TargetProperty="Offset"
+                                     From="0.3" To="0.7" 
+                                     Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
 
-                <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                        Width="300" Height="450" Margin="20" Click="FrameSelected_Click" Tag="Grid4">
-                    <Border Background="#1A1A1A" CornerRadius="15" BorderThickness="2" BorderBrush="#FE2C55">
-                        <StackPanel VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="ViewGrid" Width="180" Height="380" HorizontalAlignment="Center" Foreground="#FE2C55"/>
-                            <TextBlock Text="GRID 4" FontWeight="Bold" Margin="0,20,0,0" HorizontalAlignment="Center"/>
-                            <TextBlock Text="4 Photos - 4x6 inch" Foreground="Gray" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Border>
-                </Button>
+                                <PointAnimation Storyboard.TargetName="AnimatedGlow" 
+                                    Storyboard.TargetProperty="GradientOrigin"
+                                    From="0.2, 1" To="0.8, 1" 
+                                    Duration="0:0:10" AutoReverse="True" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Border.Triggers>
+            </Border>
 
-                <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                        Width="300" Height="450" Margin="20" Click="FrameSelected_Click" Tag="Single">
-                    <Border Background="#1A1A1A" CornerRadius="15" BorderThickness="2" BorderBrush="#9B30FF">
-                        <StackPanel VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="ImageOutline" Width="180" Height="380" HorizontalAlignment="Center" Foreground="#9B30FF"/>
-                            <TextBlock Text="SINGLE SHOT" FontWeight="Bold" Margin="0,20,0,0" HorizontalAlignment="Center"/>
-                            <TextBlock Text="1 Photo - Large Size" Foreground="Gray" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Border>
-                </Button>
-
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             </StackPanel>
+        </Grid>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+
+            <TextBlock Text="Pick Up Your Frame"
+                   Foreground="WhiteSmoke"
+                   FontFamily="pack://application:,,,/Assets/Fonts/#Rouge Script"
+                   FontSize="110" FontWeight="Heavy" 
+                   HorizontalAlignment="Center" Margin="0,0,0,0">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="15" Color="White" Opacity="0.3" ShadowDepth="0"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <Button x:Name="BtnBack" 
+                Content="BACK" Width="120" Height="35"
+                Style="{StaticResource MaterialDesignOutlinedButton}" 
+                BorderBrush="Gray" Foreground="Gray" 
+                Margin="0,0,0,0"
+                Click="BtnBack_Click"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="533">
+                <StackPanel.Resources>
+
+                    <Style x:Key="FrameCardStyle" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                        <Setter Property="Opacity" Value="0.4"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                                <Setter Property="Panel.ZIndex" Value="99"/>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" To="1.1" Duration="0:0:0.2"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" To="1.1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Resources>
+
+                <Button Style="{StaticResource FrameCardStyle}" Width="294" Height="544" Margin="20,0" VerticalAlignment="Center"
+        Click="FrameSelected_Click" Tag="ClassicStrip">
+
+                    <Border CornerRadius="20" BorderThickness="1.5" BorderBrush="#15605E" Background="#050505" Width="200" Height="517">
+                        <Border.Effect>
+                            <DropShadowEffect x:Name="GlowClassic" Color="#25F4EE" BlurRadius="5" ShadowDepth="0" Opacity="0.2"/>
+                        </Border.Effect>
+
+                        <StackPanel VerticalAlignment="Center">
+
+                            <StackPanel Margin="0,0,0,1">
+                                <Border Width="140" Height="90" Background="#1A1A2E" BorderBrush="#25F4EE" BorderThickness="1" CornerRadius="4" Margin="0,4"/>
+                                <Border Width="140" Height="90" Background="#1A1A2E" BorderBrush="#25F4EE" BorderThickness="1" CornerRadius="4" Margin="0,4"/>
+                                <Border Width="140" Height="90" Background="#1A1A2E" BorderBrush="#25F4EE" BorderThickness="1" CornerRadius="4" Margin="0,4"/>
+                                <Border Width="140" Height="90" Background="#1A1A2E" BorderBrush="#25F4EE" BorderThickness="1" CornerRadius="4" Margin="0,4"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,10,0,20">
+                                <TextBlock Text="CLASSIC STRIP" Foreground="#25F4EE" FontSize="16" 
+                           FontWeight="Black" FontStyle="Italic" HorizontalAlignment="Center"/>
+
+                                <TextBlock Text="4 PHOTOS • 2X6 INCH" Foreground="#444" FontSize="10" 
+                           FontWeight="Bold" HorizontalAlignment="Center" Margin="0,4,0,8"/>
+
+                                <materialDesign:PackIcon x:Name="IconClassic" Kind="CheckCircle" Foreground="#25F4EE" 
+                                         Width="22" Height="22" HorizontalAlignment="Center"/>
+
+                                <Border Width="30" Height="1.2" Background="#15605E" Margin="0,10,0,0" Opacity="0.4"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Border>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.GotFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="GlowClassic" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetName="GlowClassic" Storyboard.TargetProperty="BlurRadius" To="35" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.LostFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="GlowClassic" Storyboard.TargetProperty="Opacity" To="0.2" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetName="GlowClassic" Storyboard.TargetProperty="BlurRadius" To="5" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button Style="{StaticResource FrameCardStyle}" Width="554" Height="453" Margin="20,0"
+        Click="FrameSelected_Click" Tag="Postcard4x6">
+                    <Border CornerRadius="25" BorderThickness="2" BorderBrush="#FE2C55" Background="#0F0F0F" Width="452" Height="369">
+                        <Border.Effect>
+                            <DropShadowEffect x:Name="GlowPostcard" Color="#FE2C55" BlurRadius="1" ShadowDepth="0" Opacity="0.2"/>
+                        </Border.Effect>
+
+                        <Grid>
+                            <StackPanel VerticalAlignment="Center" Margin="0,10">
+                                <Border Width="364" Height="233" Background="#050505" CornerRadius="15" Margin="0,0,0,15" BorderBrush="#222" BorderThickness="1">
+                                    <UniformGrid Columns="2" Rows="2" Margin="10,10,10,10">
+                                        <Border Background="#1A1A1A" CornerRadius="4" Margin="3" BorderBrush="#FE2C55" BorderThickness="1" />
+                                        <Border Background="#1A1A1A" CornerRadius="4" Margin="3" BorderBrush="#FE2C55" BorderThickness="1" />
+                                        <Border Background="#1A1A1A" CornerRadius="4" Margin="3" BorderBrush="#FE2C55" BorderThickness="1" />
+                                        <Border Background="#1A1A1A" CornerRadius="4" Margin="3" BorderBrush="#FE2C55" BorderThickness="1" />
+                                    </UniformGrid>
+                                </Border>
+
+                                <TextBlock Text="NOIR POSTCARD" FontWeight="Black" FontSize="26" FontStyle="Italic" Foreground="#FE2C55" HorizontalAlignment="Center"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+                                    <TextBlock Text="4 PHOTOS • 4X6 INCH" Foreground="#666" FontSize="11" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon x:Name="IconPostcard" Kind="CheckCircle" Foreground="#FE2C55" Width="20" Height="20" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.GotFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="GlowPostcard" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetName="GlowPostcard" Storyboard.TargetProperty="BlurRadius" To="35" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.LostFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="GlowPostcard" Storyboard.TargetProperty="Opacity" To="0.2" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetName="GlowPostcard" Storyboard.TargetProperty="BlurRadius" To="30" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button Style="{StaticResource FrameCardStyle}" Width="350" Height="500" Margin="20,0"
+            Click="FrameSelected_Click" Tag="Single">
+                    <Border CornerRadius="25" BorderThickness="1.5" BorderBrush="#4B1D7A" Background="#0F0F0F">
+                        <Border.Effect>
+                            <DropShadowEffect x:Name="GlowSolo" Color="#9B30FF" BlurRadius="30" ShadowDepth="0" Opacity="0.2"/>
+                        </Border.Effect>
+                        <StackPanel VerticalAlignment="Center">
+                            <Border Width="220" Height="200" Background="#050505" CornerRadius="25" Margin="0,0,0,25">
+                                <Border Width="75" Height="100" Background="#1A1A1A" BorderBrush="#333" BorderThickness="1" CornerRadius="4" VerticalAlignment="Center"/>
+                            </Border>
+                            <TextBlock Text="SOLO ICON" FontWeight="Black" FontSize="24" FontStyle="Italic" Foreground="#9B30FF" HorizontalAlignment="Center"/>
+                            <TextBlock Text="1 PHOTO • 5X7 INCH" Foreground="#444" FontSize="12" FontWeight="Bold" Margin="0,8,0,20" HorizontalAlignment="Center"/>
+                            <materialDesign:PackIcon x:Name="IconSolo" Kind="CheckCircle" Foreground="#4B1D7A" Width="25" Height="25" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.GotFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="GlowSolo" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetName="GlowSolo" Storyboard.TargetProperty="BlurRadius" To="35" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.LostFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="GlowSolo" Storyboard.TargetProperty="Opacity" To="0.2" Duration="0:0:0.3"/>
+                                    <DoubleAnimation Storyboard.TargetName="GlowSolo" Storyboard.TargetProperty="BlurRadius" To="30" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+            </StackPanel>
+
             <Button x:Name="BtnNext"
-                    Opacity="0.2"
-                    Click="BtnNext_Click"
-                    Width="280" Height="80" 
-                    Background="White" Foreground="Black" 
-                    Cursor="Hand"
-                    VerticalAlignment="Bottom" Margin="0,0,0,50"
-                    materialDesign:ButtonAssist.CornerRadius="40">
+        Opacity="0.2"
+        Click="BtnNext_Click"
+        Width="280" Height="80" 
+        Background="White" Foreground="Black" 
+        Cursor="Hand"
+        VerticalAlignment="Bottom" Margin="0,50,0,50"
+        materialDesign:ButtonAssist.CornerRadius="40">
 
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
@@ -81,7 +272,6 @@
                         <GradientStop Color="DeepPink" Offset="0.5" />
                         <GradientStop Color="Transparent" Offset="0.75" />
                         <GradientStop Color="Cyan" Offset="1.0" />
-
                         <LinearGradientBrush.RelativeTransform>
                             <RotateTransform x:Name="NextBorderRotate" CenterX="0.5" CenterY="0.5" Angle="0" />
                         </LinearGradientBrush.RelativeTransform>
@@ -120,4 +310,4 @@
             </Button>
         </StackPanel>
     </Grid>
-</Window>
+</UserControl>

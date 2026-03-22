@@ -93,3 +93,10 @@ D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\AForge.Video.dll
 D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\AForge.Video.DirectShow.dll
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.baml
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.g.cs
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\AForge.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\AForge.Video.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\AForge.Video.DirectShow.dll
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.baml
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.g.cs
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii_MarkupCompile.lref

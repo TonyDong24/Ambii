@@ -12,32 +12,29 @@ namespace Ambii.Views
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Kiểm tra phần cứng (Camera)
+            // 1. Kiểm tra phần cứng (Giữ nguyên logic của bạn)
             if (MainWindow.Instance != null && !MainWindow.Instance.IsCameraReady)
             {
-                // Thay vì MessageBox trắng xóa, dùng hàm Show của bạn hoặc Snackbar
                 DarkMsg.Show("Lỗi thiết bị", "Camera chưa sẵn sàng. Vui lòng kiểm tra kết nối!");
                 return;
             }
 
-            // 2. Kiểm tra bản quyền/Thanh toán (Chỗ này để dành cho Remote Control sau này)
+            // 2. Kiểm tra bản quyền (Giữ nguyên)
             if (!CheckSessionPermission())
             {
                 DarkMsg.Show("Thông báo", "Vui lòng thanh toán tại quầy để bắt đầu lượt chụp.");
                 return;
             }
 
-            // 3. Nếu mọi thứ OK -> Chuyển sang màn hình chụp
-            // MainWindow.Instance.MainContentHolder.Content = new CaptureView();
-            //DarkMsg.Show("Thành công", "Bắt đầu lượt chụp của bạn!");
-            FrameSelectionView frameWindow = new FrameSelectionView();
-            frameWindow.Show();
-
-            // 2. Tìm cửa sổ cha (Window) đang chứa UserControl này và đóng nó lại
-            Window parentWindow = Window.GetWindow(this);
-            if (parentWindow != null)
+            // 3. ĐIỀU HƯỚNG SANG FRAME SELECTION (Sửa tại đây)
+            if (MainWindow.Instance != null)
             {
-                parentWindow.Close();
+                // CHỈ CẦN dòng này để ra lệnh cho cái "máy trượt" nhảy sang slide tiếp theo
+                // Slide 0 là StartView, Slide 1 là FrameSelectionView (như mình đã đặt trong XAML)
+                MainWindow.Instance.MainTransitioner.SelectedIndex = 1;
+
+                // Xóa bỏ hoàn toàn việc tạo 'new FrameSelectionView' 
+                // và xóa bỏ việc gán 'Content = ...'
             }
         }
         private bool CheckSessionPermission()

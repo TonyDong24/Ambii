@@ -1,77 +1,68 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Ambii.Views
 {
-    public partial class FrameSelectionView : Window
+    public partial class FrameSelectionView : UserControl
     {
+        private string _selectedFrame = "";
+
         public FrameSelectionView()
         {
             InitializeComponent();
-            LoadConfiguration();
         }
-        // Biến này dùng để lưu trữ loại Frame mà khách đã chọn
-        private string _selectedFrame = "";
 
-        // Sự kiện khi nhấn vào một loại Frame
         private void FrameSelected_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button btn && btn.Tag != null)
+            var btn = sender as Button;
+            if (btn == null || btn.Tag == null) return;
+
+            // 1. Reset tất cả Icon về ẩn
+            IconClassic.Visibility = Visibility.Collapsed;
+            IconPostcard.Visibility = Visibility.Collapsed;
+            IconSolo.Visibility = Visibility.Collapsed;
+
+            // 2. Lấy Tag để biết đang chọn Frame nào
+            _selectedFrame = btn.Tag.ToString();
+
+            // 3. Hiển thị Icon tương ứng với Tag
+            switch (_selectedFrame)
             {
-                // 2. Gán giá trị vào biến đã khai báo ở trên
-
-                _selectedFrame = btn.Tag.ToString();
-
-                // (Tùy chọn) Làm nút Next sáng lên để báo hiệu đã chọn xong
-                BtnNext.Opacity = 1.0;
+                case "ClassicStrip":
+                    IconClassic.Visibility = Visibility.Visible;
+                    break;
+                case "Postcard4x6":
+                    IconPostcard.Visibility = Visibility.Visible;
+                    break;
+                case "Single":
+                    IconSolo.Visibility = Visibility.Visible;
+                    break;
             }
+
+            // 4. Animation Focus (nếu ông vẫn muốn giữ hiệu ứng Scale của Style cũ)
+            btn.Focus();
+
+            // 5. Kích hoạt nút Next
+            BtnNext.IsEnabled = true;
+            BtnNext.Opacity = 1;
         }
 
-        private void LoadConfiguration()
-        {
-            // Vì SettingsService là static, ta gọi trực tiếp .Load()
-            var settings = Ambii.Services.SettingsService.Load();
-
-            if (settings != null)
-            {
-                // Gán trạng thái ẩn/hiện dựa trên biến IsDebugMode
-                if (settings.IsDebugMode)
-                {
-                    BtnBack.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    BtnBack.Visibility = Visibility.Collapsed;
-                }
-            }
-        }
-
-        // Quay lại màn hình chính (MainWindow)
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            main.Show();
-            this.Close();
+            // Kiểm tra Instance để tránh lỗi NullReference
+            if (MainWindow.Instance != null)
+            {
+                MainWindow.Instance.MainTransitioner.SelectedIndex = 0;
+            }
         }
-        // ĐÂY MỚI LÀ NÚT LET'S GO
+
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
-            // Kiểm tra xem khách đã chọn Frame nào chưa
-            if (string.IsNullOrEmpty(_selectedFrame))
+            if (!string.IsNullOrEmpty(_selectedFrame))
             {
-                MessageBox.Show("Vui lòng chọn một kiểu ảnh trước khi tiếp tục!");
-                return;
+                // Chuyển sang màn hình chụp hoặc xử lý tiếp theo
             }
-
-            // Thông báo Start thành công như bạn muốn
-            DarkMsg.Show("Ambii Photobooth", "Khởi động Camera thành công!");
-
-            // Chuyển sang màn hình chụp (Khi bạn đã tạo CaptureView)
-            // var captureWindow = new CaptureView(_selectedFrame);
-            // captureWindow.Show();
-
-            // Đóng cửa sổ hiện tại
-            this.Close();
         }
     }
 }

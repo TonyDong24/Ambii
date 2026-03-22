@@ -1,8 +1,12 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Threading.Tasks;
+﻿using Ambii.Services;
 using Ambii.Views;
-using Ambii.Services; // Thêm để dùng SettingsService
+using MaterialDesignThemes.Wpf; // Cần thiết cho TransitionerSlide
+using MaterialDesignThemes.Wpf.Transitions;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Ambii
 {
@@ -14,16 +18,13 @@ namespace Ambii
         public MainWindow()
         {
             InitializeComponent();
+            MainTransitioner.SelectedIndex = 0;
             Instance = this;
 
-            // 1. Chuyển sang StartView ngay khi mở
-            this.Navigate(new StartView());
+            // KHÔNG gọi Navigate(new StartView()) ở đây nữa 
+            // vì XAML đã đặt SelectedIndex="0" rồi.
 
-            // 2. Khởi tạo Camera ngầm
             StartCameraInitialization();
-
-            // 3. Đăng ký bắt sự kiện phím nhấn xuống cho toàn bộ cửa sổ này
-            this.KeyDown += Window_KeyDown;
         }
 
         private async void StartCameraInitialization()
@@ -32,17 +33,34 @@ namespace Ambii
             IsCameraReady = true;
         }
 
-        public void Navigate(UserControl nextView)
+        // HÀM NAVIGATE MỚI: Dùng để chuyển Slide trong Transitioner
+        public void Navigate(int index)
         {
-            MainContentHolder.Content = nextView;
+            if (MainTransitioner != null && index >= 0 && index < MainTransitioner.Items.Count)
+            {
+                MainTransitioner.SelectedIndex = index;
+            }
         }
 
-        // 4. Xử lý ESC để thoát toàn bộ ứng dụng
+        // Cách Navigate theo Type (Sửa lỗi 'materialDesign' không tồn tại)
+        public void NavigateToView<T>() where T : UserControl
+        {
+            if (MainTransitioner == null) return;
+
+            // Tìm slide chứa nội dung có kiểu là T
+            var slide = MainTransitioner.Items.OfType<TransitionerSlide>()
+                            .FirstOrDefault(s => s.Content is T);
+
+            if (slide != null)
+            {
+                MainTransitioner.SelectedIndex = MainTransitioner.Items.IndexOf(slide);
+            }
+        }
+
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Escape)
             {
-                // Chỉ cho thoát bằng ESC khi đang bật Debug Mode (để khách không phá được)
                 var settings = SettingsService.Load();
                 if (settings != null && settings.IsDebugMode)
                 {
@@ -51,6 +69,10 @@ namespace Ambii
             }
         }
 
-        // Bạn có thể xóa hẳn hàm ExitApp_Click này đi vì không dùng nút nữa
+        // XÓA HOẶC SỬA hàm Start_Click: Không dùng this.Content = ...
+        private void Start_Click(object sender, RoutedEventArgs e)
+        {
+            Navigate(1); // Chuyển sang slide số 1 (FrameSelectionView)
+        }
     }
 }
