@@ -14,6 +14,7 @@
     <None Remove="Assets\Fonts\Audiowide-Regular.ttf" />
     <None Remove="Assets\Fonts\RougeScript-Regular.ttf" />
     <None Remove="Assets\Fonts\Wallpoet-Regular.ttf" />
+    <None Remove="Assets\pinky_background.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +35,9 @@
     <Resource Include="Assets\Fonts\Audiowide-Regular.ttf" />
     <Resource Include="Assets\Fonts\RougeScript-Regular.ttf" />
     <Resource Include="Assets\Fonts\Wallpoet-Regular.ttf" />
+    <Resource Include="Assets\pinky_background.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
 	  
 
   </ItemGroup>
