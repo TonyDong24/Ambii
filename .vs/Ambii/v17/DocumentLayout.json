@@ -3,52 +3,68 @@
   "WorkspaceRootPath": "D:\\Csharp_learning\\Ambii\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\frameselectionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\frameselectionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\frameselectionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\frameselectionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\startview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\startview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\startview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\startview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\settingswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\settingswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\services\\settingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:services\\settingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\models\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:models\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\ambii.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:ambii.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\bg_glowing.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:bg_glowing.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\frameselectionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\frameselectionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\startview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\startview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\models\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:models\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\settingswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\settingswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\startview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\startview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\darkmsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:darkmsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\services\\settingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:services\\settingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,36 +74,122 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AppSettings.cs",
-              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Models\\AppSettings.cs",
-              "RelativeDocumentMoniker": "Models\\AppSettings.cs",
-              "ToolTip": "D:\\Csharp_learning\\Ambii\\Models\\AppSettings.cs",
-              "RelativeToolTip": "Models\\AppSettings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T07:58:07.733Z"
+              "DocumentIndex": 2,
+              "Title": "BG_glowing.txt",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\BG_glowing.txt",
+              "RelativeDocumentMoniker": "BG_glowing.txt",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\BG_glowing.txt",
+              "RelativeToolTip": "BG_glowing.txt",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAwCoAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-03-23T08:45:07.336Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "FrameSelectionView.xaml.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\FrameSelectionView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\FrameSelectionView.xaml.cs",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\FrameSelectionView.xaml.cs",
               "RelativeToolTip": "Views\\FrameSelectionView.xaml.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAgwDMAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T06:40:30.102Z",
+              "WhenOpened": "2026-03-23T06:24:22.88Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "Ambii.csproj",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Ambii.csproj",
+              "RelativeDocumentMoniker": "Ambii.csproj",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\Ambii.csproj",
+              "RelativeToolTip": "Ambii.csproj",
+              "ViewState": "AgIAABEAAAAAAAAAAAAowCMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-23T05:57:15.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAvwHsAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T05:56:59.577Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-23T05:56:57.98Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DarkMsg.cs",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\DarkMsg.cs",
+              "RelativeDocumentMoniker": "DarkMsg.cs",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\DarkMsg.cs",
+              "RelativeToolTip": "DarkMsg.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T05:56:56.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "AssemblyInfo.cs",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\AssemblyInfo.cs",
+              "RelativeToolTip": "AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T05:56:54.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T01:21:06.589Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppSettings.cs",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Models\\AppSettings.cs",
+              "RelativeDocumentMoniker": "Models\\AppSettings.cs",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\Models\\AppSettings.cs",
+              "RelativeToolTip": "Models\\AppSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T07:58:07.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "FrameSelectionView.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\FrameSelectionView.xaml",
               "RelativeDocumentMoniker": "Views\\FrameSelectionView.xaml",
@@ -99,43 +201,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "SettingsService.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Services\\SettingsService.cs",
               "RelativeDocumentMoniker": "Services\\SettingsService.cs",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Services\\SettingsService.cs",
               "RelativeToolTip": "Services\\SettingsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-16T03:16:29.308Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Ambii.csproj",
-              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Ambii.csproj",
-              "RelativeDocumentMoniker": "Ambii.csproj",
-              "ToolTip": "D:\\Csharp_learning\\Ambii\\Ambii.csproj",
-              "RelativeToolTip": "Ambii.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-16T02:55:47.747Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "SettingsWindow.xaml.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\SettingsWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\SettingsWindow.xaml.cs",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\SettingsWindow.xaml.cs",
               "RelativeToolTip": "Views\\SettingsWindow.xaml.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAswGcAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAwwJsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-16T03:03:44.232Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "SettingsWindow.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\SettingsWindow.xaml",
               "RelativeDocumentMoniker": "Views\\SettingsWindow.xaml",
@@ -146,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 6,
               "Title": "App.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -158,50 +248,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "StartView.xaml.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\StartView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\StartView.xaml.cs",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\StartView.xaml.cs",
               "RelativeToolTip": "Views\\StartView.xaml.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAIwCUAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAcwDgAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-13T08:07:48.637Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "StartView.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\StartView.xaml",
               "RelativeDocumentMoniker": "Views\\StartView.xaml",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\StartView.xaml",
               "RelativeToolTip": "Views\\StartView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-13T08:07:19.441Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml.cs",
-              "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAgwCcAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T08:01:36.843Z",
+              "WhenOpened": "2026-03-13T08:07:19.441Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-13T06:44:18.87Z"
             }
           ]
         }

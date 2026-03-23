@@ -13,6 +13,7 @@ namespace Ambii.Views
     {
         private AppSettings _settings = new();
         private FilterInfoCollection videoDevices;
+        public Action OnSettingsSaved { get; set; }
 
         public SettingsWindow()
         {
@@ -130,8 +131,9 @@ namespace Ambii.Views
 
             // THÊM DÒNG NÀY ĐỂ LƯU TRẠNG THÁI DEBUG MODE
             _settings.IsDebugMode = ChkDebugMode.IsChecked == true;
-
             SettingsService.Save(_settings);
+            OnSettingsSaved?.Invoke();
+
 
             MessageBox.Show("Settings saved successfully.", "Settings", MessageBoxButton.OK, MessageBoxImage.Information);
             Close();

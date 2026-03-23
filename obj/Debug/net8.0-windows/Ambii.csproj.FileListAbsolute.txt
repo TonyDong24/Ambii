@@ -100,3 +100,5 @@ E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.bam
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.g.cs
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii_MarkupCompile.lref
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii_MarkupCompile.lref

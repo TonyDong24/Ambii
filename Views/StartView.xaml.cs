@@ -43,12 +43,19 @@ namespace Ambii.Views
             // SAU NÀY: Bạn chỉ cần sửa chỗ này thành: return _settings.RemainingSessions > 0;
             return true;
         }
+        // Trong StartView.xaml.cs
         private void BtnAdminSetting_Click(object sender, RoutedEventArgs e)
         {
-            SettingsWindow settingsWindow = new SettingsWindow
-            {
-                Owner = Window.GetWindow(this)
+            SettingsWindow settingsWindow = new SettingsWindow { Owner = Window.GetWindow(this) };
+
+            // Tự đăng ký: Khi lưu xong thì gọi hàm UpdateDebugUI của MainWindow
+            settingsWindow.OnSettingsSaved = () => {
+                if (MainWindow.Instance != null)
+                {
+                    MainWindow.Instance.UpdateDebugUI(); // Hàm này đang là public nên gọi được!
+                }
             };
+
             settingsWindow.ShowDialog();
         }
     }

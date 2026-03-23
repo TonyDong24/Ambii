@@ -1,0 +1,61 @@
+﻿<Grid Panel.ZIndex="0" RenderOptions.BitmapScalingMode="LowQuality" RenderOptions.EdgeMode="Aliased">
+            <!-- Nền gradient tối -->
+            <Grid.Background>
+                <RadialGradientBrush Center="0.5,0.5" RadiusX="0.7" RadiusY="0.7">
+                    <GradientStop Color="#0A0A0F" Offset="0"/>
+                    <GradientStop Color="#1A1A2E" Offset="1"/>
+                </RadialGradientBrush>
+            </Grid.Background>
+
+            <!-- Lớp glow neon -->
+            <Border IsHitTestVisible="False">
+                
+                <Border.Background>
+                    <RadialGradientBrush x:Name="AnimatedGlow" Center="0.5, 0.5" GradientOrigin="0.5, 0.5"
+                                 RadiusX="0.9" RadiusY="0.9" Opacity="0.25">
+                        <GradientStop x:Name="ColorSpot" Color="#00FFFF" Offset="0"/>
+                        <GradientStop x:Name="MidSpot" Color="DarkBlue" Offset="0.5"/>
+                        <GradientStop Color="Transparent" Offset="1"/>
+                    </RadialGradientBrush>
+                </Border.Background>
+
+                <!-- Hiệu ứng ánh sáng mềm -->
+                <Border.Effect>
+                    <DropShadowEffect Color="DarkBlue" BlurRadius="30" ShadowDepth="0" Opacity="0.6"/>
+                </Border.Effect>
+
+                <Border.Triggers>
+                    <EventTrigger RoutedEvent="Border.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <!-- Đổi màu neon liên tục -->
+                                <ColorAnimation Storyboard.TargetName="ColorSpot"
+                                        Storyboard.TargetProperty="Color"
+                                        From="#00FFFF" To="#FF00FF"
+                                        Duration="0:0:6" AutoReverse="True" RepeatBehavior="Forever"/>
+
+                                <ColorAnimation Storyboard.TargetName="MidSpot"
+                                        Storyboard.TargetProperty="Color"
+                                        From="#39FF14" To="#9B30FF"
+                                        Duration="0:0:8" AutoReverse="True" RepeatBehavior="Forever"/>
+
+                                <!-- Offset thay đổi để glow “thở” -->
+                                <DoubleAnimation Storyboard.TargetName="MidSpot"
+                                         Storyboard.TargetProperty="Offset"
+                                         From="0.3" To="0.7"
+                                         Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
+
+                                <!-- GradientOrigin di chuyển để tạo cảm giác ánh sáng động -->
+                                <PointAnimation Storyboard.TargetName="AnimatedGlow"
+                                        Storyboard.TargetProperty="GradientOrigin"
+                                        From="0.2,0.5" To="0.8,0.5"
+                                        Duration="0:0:10" AutoReverse="True" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Border.Triggers>
+            </Border>
+
+            <!-- Nội dung chính -->
+            
+        </Grid>

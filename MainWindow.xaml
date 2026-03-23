@@ -35,9 +35,9 @@
                 </md:TransitionerSlide.BackwardWipe>
 
                 <md:TransitionerSlide.OpeningEffects>
-                    <md:TransitionEffect Kind="FadeIn" Duration="0:0:0.4" />
+                    <md:TransitionEffect Kind="FadeIn" Duration="0:0:0.3" />
 
-                    <md:TransitionEffect Kind="ExpandIn" Duration="0:0:0.8" />
+                    <md:TransitionEffect Kind="ExpandIn" Duration="0:0:0.3" />
                 </md:TransitionerSlide.OpeningEffects>
 
                 <views:FrameSelectionView />

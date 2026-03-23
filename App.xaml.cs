@@ -9,6 +9,7 @@ namespace Ambii
     /// </summary>
     public partial class App : Application
     {
+        
     }
 
 }

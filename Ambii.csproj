@@ -10,7 +10,10 @@
 
   <ItemGroup>
     <None Remove="Assets\darkstyle.jpg" />
+    <None Remove="Assets\darkstyle_removebgr.png" />
+    <None Remove="Assets\Fonts\Audiowide-Regular.ttf" />
     <None Remove="Assets\Fonts\RougeScript-Regular.ttf" />
+    <None Remove="Assets\Fonts\Wallpoet-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +26,16 @@
     <Resource Include="Assets\darkstyle.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\darkstyle_removebgr.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+
+	  
+    <Resource Include="Assets\Fonts\Audiowide-Regular.ttf" />
     <Resource Include="Assets\Fonts\RougeScript-Regular.ttf" />
+    <Resource Include="Assets\Fonts\Wallpoet-Regular.ttf" />
+	  
+
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using Ambii.Services;
 
 namespace Ambii.Views
 {
@@ -11,6 +12,18 @@ namespace Ambii.Views
         public FrameSelectionView()
         {
             InitializeComponent();
+            this.Unloaded += (s, e) => {
+                this.DataContext = null;
+            };
+            this.IsVisibleChanged += (s, e) => {
+                if ((bool)e.NewValue) // Nếu IsVisible == true
+                {
+                    var settings = SettingsService.Load();
+                    bool isDebug = settings?.IsDebugMode ?? false;
+                    BtnBack.Visibility = isDebug ? Visibility.Visible : Visibility.Collapsed;
+                }
+            };
+
         }
 
         private void FrameSelected_Click(object sender, RoutedEventArgs e)
@@ -25,6 +38,7 @@ namespace Ambii.Views
 
             // 2. Lấy Tag để biết đang chọn Frame nào
             _selectedFrame = btn.Tag.ToString();
+    
 
             // 3. Hiển thị Icon tương ứng với Tag
             switch (_selectedFrame)
@@ -50,6 +64,8 @@ namespace Ambii.Views
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
+            //if (!App.IsDebugMode) return; // Nếu không phải debug thì bấm cũng không chạy
+            _selectedFrame = "";
             // Kiểm tra Instance để tránh lỗi NullReference
             if (MainWindow.Instance != null)
             {
@@ -64,5 +80,6 @@ namespace Ambii.Views
                 // Chuyển sang màn hình chụp hoặc xử lý tiếp theo
             }
         }
+        
     }
 }

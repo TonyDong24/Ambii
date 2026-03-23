@@ -21,7 +21,7 @@
             <Border IsHitTestVisible="False">
                 <Border.Background>
                     <RadialGradientBrush x:Name="AnimatedGlow" Center="0.5, 1" GradientOrigin="0.5, 1" 
-                             RadiusX="0.9" RadiusY="0.5" Opacity="0.4">
+             RadiusX="0.9" RadiusY="0.5" Opacity="0.4">
                         <GradientStop x:Name="ColorSpot" Color="#2ECC71" Offset="0"/>
                         <GradientStop x:Name="MidSpot" Color="#15605E" Offset="0.5"/>
                         <GradientStop Color="Transparent" Offset="1"/>
@@ -33,19 +33,19 @@
                         <BeginStoryboard>
                             <Storyboard>
                                 <ColorAnimation Storyboard.TargetName="ColorSpot" 
-                                    Storyboard.TargetProperty="Color"
-                                    From="#2ECC71" To="#9B30FF" 
-                                    Duration="0:0:8" AutoReverse="True" RepeatBehavior="Forever"/>
+                    Storyboard.TargetProperty="Color"
+                    From="#2ECC71" To="#9B30FF" 
+                    Duration="0:0:8" AutoReverse="True" RepeatBehavior="Forever"/>
 
                                 <DoubleAnimation Storyboard.TargetName="MidSpot" 
-                                     Storyboard.TargetProperty="Offset"
-                                     From="0.3" To="0.7" 
-                                     Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
+                     Storyboard.TargetProperty="Offset"
+                     From="0.3" To="0.7" 
+                     Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
 
                                 <PointAnimation Storyboard.TargetName="AnimatedGlow" 
-                                    Storyboard.TargetProperty="GradientOrigin"
-                                    From="0.2, 1" To="0.8, 1" 
-                                    Duration="0:0:10" AutoReverse="True" RepeatBehavior="Forever"/>
+                    Storyboard.TargetProperty="GradientOrigin"
+                    From="0.2, 1" To="0.8, 1" 
+                    Duration="0:0:10" AutoReverse="True" RepeatBehavior="Forever"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -56,15 +56,17 @@
             </StackPanel>
         </Grid>
 
+
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
-            <TextBlock Text="Pick Up Your Frame"
-                   Foreground="WhiteSmoke"
-                   FontFamily="pack://application:,,,/Assets/Fonts/#Rouge Script"
-                   FontSize="110" FontWeight="Heavy" 
-                   HorizontalAlignment="Center" Margin="0,0,0,0">
+            <TextBlock Text="| Pick Up Your Frame"
+                       Foreground="#FFD300"
+                       FontFamily="pack://application:,,,/Assets/Fonts/#Wallpoet"
+                       FontSize="90" FontWeight="Heavy"
+                       Panel.ZIndex="99"
+                       HorizontalAlignment="Center" Margin="0,0,0,0">
                 <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="15" Color="White" Opacity="0.3" ShadowDepth="0"/>
+                    <DropShadowEffect BlurRadius="3" Color="#FF8A00" Opacity="0.9" ShadowDepth="4"/>
                 </TextBlock.Effect>
             </TextBlock>
 
@@ -75,7 +77,7 @@
                 Margin="0,0,0,0"
                 Click="BtnBack_Click"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="533">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="533" Margin="0,35,0,0">
                 <StackPanel.Resources>
 
                     <Style x:Key="FrameCardStyle" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
@@ -115,7 +117,7 @@
                 </StackPanel.Resources>
 
                 <Button Style="{StaticResource FrameCardStyle}" Width="294" Height="544" Margin="20,0" VerticalAlignment="Center"
-        Click="FrameSelected_Click" Tag="ClassicStrip">
+        Click="FrameSelected_Click" Tag="ClassicStrip" >
 
                     <Border CornerRadius="20" BorderThickness="1.5" BorderBrush="#15605E" Background="#050505" Width="200" Height="517">
                         <Border.Effect>
@@ -223,9 +225,9 @@
                             <Border Width="220" Height="200" Background="#050505" CornerRadius="25" Margin="0,0,0,25">
                                 <Border Width="75" Height="100" Background="#1A1A1A" BorderBrush="#333" BorderThickness="1" CornerRadius="4" VerticalAlignment="Center"/>
                             </Border>
-                            <TextBlock Text="SOLO ICON" FontWeight="Black" FontSize="24" FontStyle="Italic" Foreground="#9B30FF" HorizontalAlignment="Center"/>
+                            <TextBlock Text="SPECIAL FRAME" FontWeight="Black" FontSize="24" FontStyle="Italic" Foreground="#9B30FF" HorizontalAlignment="Center"/>
                             <TextBlock Text="1 PHOTO • 5X7 INCH" Foreground="#444" FontSize="12" FontWeight="Bold" Margin="0,8,0,20" HorizontalAlignment="Center"/>
-                            <materialDesign:PackIcon x:Name="IconSolo" Kind="CheckCircle" Foreground="#4B1D7A" Width="25" Height="25" HorizontalAlignment="Center"/>
+                            <materialDesign:PackIcon x:Name="IconSolo" Kind="CheckCircle" Foreground="#9B30FF" Width="25" Height="25" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Border>
                     <Button.Triggers>
@@ -250,13 +252,13 @@
             </StackPanel>
 
             <Button x:Name="BtnNext"
-        Opacity="0.2"
-        Click="BtnNext_Click"
-        Width="280" Height="80" 
-        Background="White" Foreground="Black" 
-        Cursor="Hand"
-        VerticalAlignment="Bottom" Margin="0,50,0,50"
-        materialDesign:ButtonAssist.CornerRadius="40">
+                            Click="BtnNext_Click"
+                            Opacity="0.2"
+                            Width="280" Height="80" 
+                            Background="White" Foreground="Black" 
+                            Cursor="Hand"
+                            VerticalAlignment="Bottom" Margin="0,50,0,50"
+                            materialDesign:ButtonAssist.CornerRadius="40">
 
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
