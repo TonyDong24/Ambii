@@ -86,8 +86,7 @@
               "RelativeToolTip": "BG_glowing.txt",
               "ViewState": "AgIAABsAAAAAAAAAAAAAwCoAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2026-03-23T08:45:07.336Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T08:45:07.336Z"
             },
             {
               "$type": "Document",
@@ -99,8 +98,7 @@
               "RelativeToolTip": "Views\\FrameSelectionView.xaml.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T06:24:22.88Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T06:24:22.88Z"
             },
             {
               "$type": "Document",
@@ -112,8 +110,7 @@
               "RelativeToolTip": "Ambii.csproj",
               "ViewState": "AgIAABEAAAAAAAAAAAAowCMAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-23T05:57:15.07Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T05:57:15.07Z"
             },
             {
               "$type": "Document",
@@ -184,8 +181,7 @@
               "RelativeToolTip": "Models\\AppSettings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T07:58:07.733Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T07:58:07.733Z"
             },
             {
               "$type": "Document",
@@ -267,8 +263,7 @@
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\StartView.xaml",
               "RelativeToolTip": "Views\\StartView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-13T08:07:19.441Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T08:07:19.441Z"
             }
           ]
         }
