@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using Ambii.Models;
 using Ambii.Services;
 
 namespace Ambii.Views
@@ -8,10 +9,14 @@ namespace Ambii.Views
     public partial class FrameSelectionView : UserControl
     {
         private string _selectedFrame = "";
+        private ConfigService _configService;
+        public static FrameConfig SelectedFrameData { get; private set; }
 
         public FrameSelectionView()
         {
             InitializeComponent();
+            _configService = new ConfigService();
+            _configService.LoadConfigs();
             this.Unloaded += (s, e) => {
                 this.DataContext = null;
             };
@@ -31,33 +36,30 @@ namespace Ambii.Views
             var btn = sender as Button;
             if (btn == null || btn.Tag == null) return;
 
-            // 1. Reset tất cả Icon về ẩn
+            // 1. Reset các Icon (Giữ nguyên code cũ của ông)
             IconClassic.Visibility = Visibility.Collapsed;
             IconPostcard.Visibility = Visibility.Collapsed;
             IconSolo.Visibility = Visibility.Collapsed;
 
-            // 2. Lấy Tag để biết đang chọn Frame nào
+            // 2. Lấy Tag
             _selectedFrame = btn.Tag.ToString();
-    
 
-            // 3. Hiển thị Icon tương ứng với Tag
-            switch (_selectedFrame)
+            // --- BƯỚC MỚI: Tra cứu thông tin từ JSON ---
+            if (_configService.Frames != null)
             {
-                case "ClassicStrip":
-                    IconClassic.Visibility = Visibility.Visible;
-                    break;
-                case "Postcard4x6":
-                    IconPostcard.Visibility = Visibility.Visible;
-                    break;
-                case "Single":
-                    IconSolo.Visibility = Visibility.Visible;
-                    break;
+                // Tìm frame trong danh sách có Id khớp với Tag của Button
+                SelectedFrameData = _configService.Frames.Find(f => f.Id == _selectedFrame);
             }
 
-            // 4. Animation Focus (nếu ông vẫn muốn giữ hiệu ứng Scale của Style cũ)
-            btn.Focus();
+            // 3. Hiển thị Icon tương ứng (Giữ nguyên switch case của ông)
+            switch (_selectedFrame)
+            {
+                case "ClassicStrip": IconClassic.Visibility = Visibility.Visible; break;
+                case "Postcard4x6": IconPostcard.Visibility = Visibility.Visible; break;
+                case "Single": IconSolo.Visibility = Visibility.Visible; break;
+            }
 
-            // 5. Kích hoạt nút Next
+            btn.Focus();
             BtnNext.IsEnabled = true;
             BtnNext.Opacity = 1;
         }
@@ -77,9 +79,18 @@ namespace Ambii.Views
         {
             if (!string.IsNullOrEmpty(_selectedFrame))
             {
-                // Chuyển sang màn hình chụp hoặc xử lý tiếp theo
+                // Ví dụ: Lấy kích thước để debug hoặc chuẩn bị cho Camera
+                double w = SelectedFrameData.CameraWidth;
+                double h = SelectedFrameData.CameraHeight;
+
+                // Chuyển sang màn hình chụp (ví dụ Index 2)
+                if (MainWindow.Instance != null)
+                {
+                    MainWindow.Instance.MainTransitioner.SelectedIndex = 2;
+                }
             }
         }
+
         
     }
 }

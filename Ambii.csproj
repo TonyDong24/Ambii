@@ -15,6 +15,13 @@
     <None Remove="Assets\Fonts\RougeScript-Regular.ttf" />
     <None Remove="Assets\Fonts\Wallpoet-Regular.ttf" />
     <None Remove="Assets\pinky_background.png" />
+    <None Remove="Configs\frames_config.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Configs\frames_config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

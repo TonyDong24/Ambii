@@ -1,0 +1,12 @@
+[
+    {
+        "Id": "ClassicStrip",
+        "CameraWidth": 400,
+        "CameraHeight": 600
+    },
+    {
+        "Id": "Postcard4x6",
+        "CameraWidth": 1200,
+        "CameraHeight": 800
+    }
+]

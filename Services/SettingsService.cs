@@ -27,4 +27,19 @@ namespace Ambii.Services
             File.WriteAllText(FilePath, json);
         }
     }
+
+    public class ConfigService
+    {
+        public List<FrameConfig> Frames { get; private set; }
+
+        public void LoadConfigs()
+        {
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs", "frames_config.json");
+            if (File.Exists(path))
+            {
+                string json = File.ReadAllText(path);
+                Frames = JsonSerializer.Deserialize<List<FrameConfig>>(json);
+            }
+        }
+    }
 }
