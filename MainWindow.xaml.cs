@@ -16,7 +16,10 @@ namespace Ambii
         public static MainWindow Instance { get; private set; }
         public bool IsCameraReady { get; set; } = false;
         private System.Windows.Threading.DispatcherTimer _inactivityTimer;
-        private int _count = 60;
+        private int frame_cd = 15; // Đây là cấu hình mặc định
+        private int _currentCount = 0; // Biến này mới là biến bị trừ dần
+        // color text count down
+        private readonly SolidColorBrush _pinkAmbii = new SolidColorBrush(Color.FromRgb(244, 116, 126));
 
         public MainWindow()
         {
@@ -32,7 +35,7 @@ namespace Ambii
 
         private async void StartCameraInitialization()
         {
-            await Task.Delay(3000); // Giả lập load camera
+            await Task.Delay(500); // Giả lập load camera
             IsCameraReady = true;
         }
 
@@ -68,7 +71,7 @@ namespace Ambii
             switch (index)
             {
                 case 1: // FrameSelection: Đếm ngược 60s để quay lại Start
-                    StartCountdown(60);
+                    StartCountdown(frame_cd);
                     break;
 
                 case 2: // CameraView/Filter: Đếm ngược 30s để tự động Next
@@ -89,10 +92,17 @@ namespace Ambii
         }
         private void StartCountdown(int seconds)
         {
-            _count = seconds;
-            TxtCountdown.Text = $"{_count}s";
-            TxtCountdown.Foreground = new SolidColorBrush(Color.FromRgb(255, 105, 180)); // Reset về màu hồng
-            TxtCountdown.FontSize = 32; // Reset về kích thước chuẩn
+            _currentCount = seconds;
+            CountDownProgress.Maximum = seconds;
+            CountDownProgress.Value = seconds;
+
+            TxtCountdown.Text = _currentCount.ToString();
+
+            // Sử dụng biến màu hồng đã khai báo
+            TxtCountdown.Foreground = _pinkAmbii;
+            CountDownProgress.Foreground = _pinkAmbii;
+
+            TxtCountdown.FontSize = 32;
             InactivityPanel.Visibility = Visibility.Visible;
             _inactivityTimer.Start();
         }
@@ -181,23 +191,36 @@ namespace Ambii
 
         private void InactivityTimer_Tick(object? sender, EventArgs e)
         {
-            _count--;
-            TxtCountdown.Text = $"{_count}s";
+            _currentCount--;
 
-            // Đổi sang màu đỏ khi còn dưới 10 giây để cảnh báo khách
-            if (_count <= 10)
+            // 1. Cập nhật con số
+            TxtCountdown.Text = _currentCount.ToString();
+
+            // 2. Cập nhật vòng tròn vơi dần
+            CountDownProgress.Value = _currentCount;
+
+            // 3. Hiệu ứng cảnh báo (Dưới 10 giây)
+            if (_currentCount <= 10)
             {
-                TxtCountdown.Foreground = Brushes.Red;
+                var alertColor = Brushes.Red;
+                TxtCountdown.Foreground = alertColor;
+                CountDownProgress.Foreground = alertColor;
+
+                // Thêm một chút hiệu ứng phóng to nhẹ cho số nếu ông thích
+                TxtCountdown.FontSize = 50;
             }
             else
             {
-                TxtCountdown.Foreground = new SolidColorBrush(Color.FromRgb(255, 105, 180)); // Màu hồng ban đầu
+                // Màu hồng Pinky ban đầu
+                TxtCountdown.Foreground = _pinkAmbii;
+                CountDownProgress.Foreground = _pinkAmbii;
+                TxtCountdown.FontSize = 32; // Giữ size cố định cho đẹp
             }
 
-            if (_count <= 0)
+            if (_currentCount <= 0)
             {
                 _inactivityTimer.Stop();
-                ExecuteTimeoutAction(); // Chạy bước xử lý khi hết giờ
+                ExecuteTimeoutAction();
             }
         }
         private void ExecuteTimeoutAction()

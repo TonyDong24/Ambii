@@ -103,3 +103,4 @@ D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\refint\Ambii.dll
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.pdb
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.genruntimeconfig.cache
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\ref\Ambii.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Configs\frames_config.json

@@ -45,27 +45,33 @@
             </md:TransitionerSlide>
 
         </md:Transitioner>
-        <StackPanel x:Name="InactivityPanel" 
-                    Panel.ZIndex="100"
-                    VerticalAlignment="Top" 
-                    HorizontalAlignment="Right" 
-                    Margin="40"
-                    Visibility="Collapsed"
-                    IsHitTestVisible="False">
+        <Grid x:Name="InactivityPanel" 
+              VerticalAlignment="Top" 
+              HorizontalAlignment="Right" 
+              Margin="0,60,100,0"
+              Visibility="Collapsed"
+              IsHitTestVisible="False"
+              Panel.ZIndex="99">
 
-            <TextBlock Text="THỜI GIAN CÒN LẠI" 
-                       Foreground="White" FontSize="12" FontWeight="Bold" Opacity="0.7" 
-                       HorizontalAlignment="Right"/>
+            <ProgressBar x:Name="CountDownProgress"
+                         Style="{StaticResource MaterialDesignCircularProgressBar}"
+                         Value="60" 
+                         Minimum="0" 
+                         Maximum="60"
+                         Width="90" 
+                         Height="90"
+                         Foreground="#f4747e"
+                         md:TransitionAssist.DisableTransitions="True" />
 
             <TextBlock x:Name="TxtCountdown" 
-                       Text="60s" 
-                       Foreground="#FF69B4" 
-                       FontSize="36" FontWeight="ExtraBold" 
-                       HorizontalAlignment="Right">
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="10" ShadowDepth="2" Color="Black"/>
-                </TextBlock.Effect>
+                       Text="60" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       Foreground="#f4747e" 
+                       FontSize="28" 
+                       FontWeight="ExtraBold">
+               
             </TextBlock>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Window>
