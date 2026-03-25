@@ -6,25 +6,52 @@ namespace Ambii.Services
 {
     public static class SettingsService
     {
-        private static readonly string FilePath = "appsettings.json";
+        // Chỉnh lại đường dẫn để nó tìm vào folder Configs
+        private static readonly string ConfigFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs");
+        private static readonly string FilePath = Path.Combine(ConfigFolder, "appsettings.json");
 
         public static AppSettings Load()
         {
-            if (!File.Exists(FilePath))
-                return new AppSettings();
+            try
+            {
+                if (!File.Exists(FilePath))
+                    return new AppSettings();
 
-            string json = File.ReadAllText(FilePath);
-            return JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();
+                // Dùng FileStream + FileShare.ReadWrite để máy lễ tân sửa qua mạng app vẫn đọc được
+                using (var stream = new FileStream(FilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (var reader = new StreamReader(stream))
+                {
+                    string json = reader.ReadToEnd();
+                    return JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();
+                }
+            }
+            catch
+            {
+                return new AppSettings();
+            }
         }
 
         public static void Save(AppSettings settings)
         {
-            string json = JsonSerializer.Serialize(settings, new JsonSerializerOptions
+            try
             {
-                WriteIndented = true
-            });
+                // Tự tạo folder Configs nếu chưa có (để File.WriteAllText không bị crash)
+                if (!Directory.Exists(ConfigFolder))
+                {
+                    Directory.CreateDirectory(ConfigFolder);
+                }
 
-            File.WriteAllText(FilePath, json);
+                string json = JsonSerializer.Serialize(settings, new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+
+                File.WriteAllText(FilePath, json);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Lỗi lưu settings: {ex.Message}");
+            }
         }
     }
 
@@ -34,11 +61,29 @@ namespace Ambii.Services
 
         public void LoadConfigs()
         {
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs", "frames_config.json");
-            if (File.Exists(path))
+            try
             {
-                string json = File.ReadAllText(path);
-                Frames = JsonSerializer.Deserialize<List<FrameConfig>>(json);
+                // Lấy đường dẫn thư mục đang chạy (Debug hoặc thư mục cài đặt)
+                string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+                // Kết hợp thành đường dẫn: Debug/Configs/frames_config.json
+                string path = Path.Combine(baseDir, "Configs", "frames_config.json");
+
+                if (File.Exists(path))
+                {
+                    // Dùng FileShare.ReadWrite để máy lễ tân có thể mở sửa qua mạng mà App không bị crash
+                    using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    using (var reader = new StreamReader(stream))
+                    {
+                        string json = reader.ReadToEnd();
+                        Frames = JsonSerializer.Deserialize<List<FrameConfig>>(json);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi nếu có (ví dụ file JSON sai định dạng)
+                System.Diagnostics.Debug.WriteLine($"Lỗi load config: {ex.Message}");
             }
         }
     }

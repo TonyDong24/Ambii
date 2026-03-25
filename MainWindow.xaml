@@ -15,6 +15,7 @@
                          SelectedIndex="0" 
                          AutoApplyTransitionOrigins="True">
 
+
             <md:Transitioner.InputBindings>
                 <KeyBinding Key="Left" Command="{x:Static md:Transitioner.MovePreviousCommand}" />
                 <KeyBinding Key="Right" Command="{x:Static md:Transitioner.MoveNextCommand}" />
@@ -44,5 +45,27 @@
             </md:TransitionerSlide>
 
         </md:Transitioner>
+        <StackPanel x:Name="InactivityPanel" 
+                    Panel.ZIndex="100"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Margin="40"
+                    Visibility="Collapsed"
+                    IsHitTestVisible="False">
+
+            <TextBlock Text="THỜI GIAN CÒN LẠI" 
+                       Foreground="White" FontSize="12" FontWeight="Bold" Opacity="0.7" 
+                       HorizontalAlignment="Right"/>
+
+            <TextBlock x:Name="TxtCountdown" 
+                       Text="60s" 
+                       Foreground="#FF69B4" 
+                       FontSize="36" FontWeight="ExtraBold" 
+                       HorizontalAlignment="Right">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="2" Color="Black"/>
+                </TextBlock.Effect>
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </Window>

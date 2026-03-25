@@ -15,20 +15,34 @@ namespace Ambii.Views
         public FrameSelectionView()
         {
             InitializeComponent();
+
+            // 1. Khởi tạo service (Nhưng đừng gọi LoadConfigs ở đây nữa)
             _configService = new ConfigService();
-            _configService.LoadConfigs();
+
             this.Unloaded += (s, e) => {
                 this.DataContext = null;
             };
-            this.IsVisibleChanged += (s, e) => {
-                if ((bool)e.NewValue) // Nếu IsVisible == true
+
+            // 2. Chuyển toàn bộ logic Load vào IsVisibleChanged
+            this.IsVisibleChanged += (s, e) =>
+            {
+                if ((bool)e.NewValue) // Khi màn hình Index 1 này hiện lên
                 {
+                    // --- A. Cập nhật quyền Debug (Ẩn/Hiện nút Back) ---
                     var settings = SettingsService.Load();
                     bool isDebug = settings?.IsDebugMode ?? false;
                     BtnBack.Visibility = isDebug ? Visibility.Visible : Visibility.Collapsed;
+
+                    // --- B. Cập nhật danh sách Frame (frames_config.json) ---
+                    // Gọi lại hàm này để đọc file JSON mới nhất từ folder Configs
+                    _configService.LoadConfigs();
+
+                    // --- C. Cập nhật UI (Nếu ông dùng ItemsSource) ---
+                    // Nếu ông đang dùng một ListBox hoặc ComboBox để hiện danh sách frame:
+                    // ListFrames.ItemsSource = _configService.Frames; 
+                    // (Hoặc nếu dùng DataContext thì gán lại DataContext)
                 }
             };
-
         }
 
         private void FrameSelected_Click(object sender, RoutedEventArgs e)
@@ -77,20 +91,32 @@ namespace Ambii.Views
 
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(_selectedFrame))
+            // 1. Kiểm tra xem đã chọn Frame chưa
+            if (string.IsNullOrEmpty(_selectedFrame))
             {
-                // Ví dụ: Lấy kích thước để debug hoặc chuẩn bị cho Camera
-                double w = SelectedFrameData.CameraWidth;
-                double h = SelectedFrameData.CameraHeight;
+                DarkMsg.Show("Thông báo", "Vui lòng chọn một khung ảnh bạn yêu thích!");
+                return;
+            }
 
-                // Chuyển sang màn hình chụp (ví dụ Index 2)
-                if (MainWindow.Instance != null)
-                {
-                    MainWindow.Instance.MainTransitioner.SelectedIndex = 2;
-                }
+            // 2. CHECK CAMERA READY LẦN CUỐI (Tuyến phòng thủ cuối cùng)
+            if (MainWindow.Instance == null || !MainWindow.Instance.IsCameraReady)
+            {
+                DarkMsg.Show("Lỗi thiết bị", "Tín hiệu Camera đã bị ngắt kết nối. Vui lòng kiểm tra lại thiết bị!");
+                return; // Chặn đứng, không cho sang màn hình chụp
+            }
+
+            
+            double w = SelectedFrameData.CameraWidth;
+            double h = SelectedFrameData.CameraHeight;
+
+            // Chuyển sang màn hình chụp (Index 2)
+            if (MainWindow.Instance != null)
+            {
+                
+                MainWindow.Instance.Navigate(2);
             }
         }
 
-        
+
     }
 }

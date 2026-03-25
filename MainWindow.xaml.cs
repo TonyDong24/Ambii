@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Ambii
 {
@@ -14,6 +15,8 @@ namespace Ambii
     {
         public static MainWindow Instance { get; private set; }
         public bool IsCameraReady { get; set; } = false;
+        private System.Windows.Threading.DispatcherTimer _inactivityTimer;
+        private int _count = 60;
 
         public MainWindow()
         {
@@ -23,7 +26,7 @@ namespace Ambii
 
             // KHÔNG gọi Navigate(new StartView()) ở đây nữa 
             // vì XAML đã đặt SelectedIndex="0" rồi.
-
+            InitInactivityTimer();
             StartCameraInitialization();
         }
 
@@ -39,36 +42,59 @@ namespace Ambii
         {
             if (MainTransitioner == null || index < 0 || index >= MainTransitioner.Items.Count) return;
 
-            var targetSlide = MainTransitioner.Items[index] as TransitionerSlide;
+            // --- PHẦN 1: QUẢN LÝ TIMER (MỚI THÊM) ---
+            // Trước khi chuyển trang, hãy dừng timer cũ để tránh xung đột
+            if (_inactivityTimer != null) _inactivityTimer.Stop();
 
-            // 1. TỐI ƯU RAM: Chỉ khởi tạo View khi thực sự chuyển tới (Lazy Loading)
+            // --- PHẦN 2: TỐI ƯU RAM (CŨ CỦA ÔNG) ---
+            var targetSlide = MainTransitioner.Items[index] as TransitionerSlide;
             if (targetSlide != null && targetSlide.Content == null)
             {
-                if (index == 1) // Giả định Slide 1 là FrameSelectionView
-                {
-                    targetSlide.Content = new FrameSelectionView();
-                }
-                // Thêm các index khác ở đây nếu ông có thêm màn hình (vđ: index == 2 là ResultView)
+                if (index == 1) targetSlide.Content = new FrameSelectionView();
+                // Ví dụ: if (index == 2) targetSlide.Content = new CameraView();
             }
 
-            // 2. GIẢI PHÓNG RAM: Nếu quay về trang chủ (index 0), hãy xóa View trang chọn Frame
+            // Giải phóng RAM khi về trang chủ (Index 0)
             if (index == 0)
             {
                 var frameSlide = MainTransitioner.Items[1] as TransitionerSlide;
-                if (frameSlide != null)
-                {
-                    frameSlide.Content = null; // Xóa view để giải phóng ~500MB RAM
-                }
+                if (frameSlide != null) frameSlide.Content = null;
+
+                // Ẩn bảng đếm ngược khi ở màn hình Start
+                InactivityPanel.Visibility = Visibility.Collapsed;
             }
 
-            // 3. THỰC HIỆN CHUYỂN TRANG
+            // --- PHẦN 3: KÍCH HOẠT TIMER CHO TRANG MỚI (MỚI THÊM) ---
+            switch (index)
+            {
+                case 1: // FrameSelection: Đếm ngược 60s để quay lại Start
+                    StartCountdown(60);
+                    break;
+
+                case 2: // CameraView/Filter: Đếm ngược 30s để tự động Next
+                    StartCountdown(30);
+                    break;
+
+                    // Thêm các case khác nếu cần...
+            }
+
+            // --- PHẦN 4: THỰC HIỆN CHUYỂN TRANG ---
             MainTransitioner.SelectedIndex = index;
 
-            // 4. CẬP NHẬT UI DEBUG & ÉP DỌN RÁC
+            // CẬP NHẬT UI DEBUG & ÉP DỌN RÁC
             UpdateDebugUI();
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
+        }
+        private void StartCountdown(int seconds)
+        {
+            _count = seconds;
+            TxtCountdown.Text = $"{_count}s";
+            TxtCountdown.Foreground = new SolidColorBrush(Color.FromRgb(255, 105, 180)); // Reset về màu hồng
+            TxtCountdown.FontSize = 32; // Reset về kích thước chuẩn
+            InactivityPanel.Visibility = Visibility.Visible;
+            _inactivityTimer.Start();
         }
 
         // Cách Navigate theo Type (Sửa lỗi 'materialDesign' không tồn tại)
@@ -146,5 +172,56 @@ namespace Ambii
 
             settingsWin.ShowDialog();
         }
+        private void InitInactivityTimer()
+        {
+            _inactivityTimer = new System.Windows.Threading.DispatcherTimer();
+            _inactivityTimer.Interval = TimeSpan.FromSeconds(1);
+            _inactivityTimer.Tick += InactivityTimer_Tick;
+        }
+
+        private void InactivityTimer_Tick(object? sender, EventArgs e)
+        {
+            _count--;
+            TxtCountdown.Text = $"{_count}s";
+
+            // Đổi sang màu đỏ khi còn dưới 10 giây để cảnh báo khách
+            if (_count <= 10)
+            {
+                TxtCountdown.Foreground = Brushes.Red;
+            }
+            else
+            {
+                TxtCountdown.Foreground = new SolidColorBrush(Color.FromRgb(255, 105, 180)); // Màu hồng ban đầu
+            }
+
+            if (_count <= 0)
+            {
+                _inactivityTimer.Stop();
+                ExecuteTimeoutAction(); // Chạy bước xử lý khi hết giờ
+            }
+        }
+        private void ExecuteTimeoutAction()
+        {
+            int currentIndex = MainTransitioner.SelectedIndex;
+
+            switch (currentIndex)
+            {
+                case 1: // Hết giờ ở FrameSelection -> Quay về Start & Khóa Permission
+                    var settings = SettingsService.Load();
+                    if (settings != null && !settings.IsDebugMode)
+                    {
+                        settings.CheckSessionPermission = false;
+                        SettingsService.Save(settings);
+                    }
+                    Navigate(0);
+                    break;
+
+                case 2: // Hết giờ ở FilterSelection -> Tự động đi tiếp
+                        // Giả sử ông có logic lưu ảnh ở đây, rồi nhảy sang Index 3
+                    Navigate(3);
+                    break;
+            }
+        }
+
     }
 }

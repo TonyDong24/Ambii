@@ -1,52 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Assets\darkstyle.jpg" />
-    <None Remove="Assets\darkstyle_removebgr.png" />
-    <None Remove="Assets\Fonts\Audiowide-Regular.ttf" />
-    <None Remove="Assets\Fonts\RougeScript-Regular.ttf" />
-    <None Remove="Assets\Fonts\Wallpoet-Regular.ttf" />
-    <None Remove="Assets\pinky_background.png" />
-    <None Remove="Configs\frames_config.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
+		<PackageReference Include="MaterialDesignColors" Version="5.3.0" />
+		<PackageReference Include="MaterialDesignThemes" Version="5.3.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="Configs\frames_config.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="Configs\frames_config.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
-    <PackageReference Include="MaterialDesignColors" Version="5.3.0" />
-    <PackageReference Include="MaterialDesignThemes" Version="5.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Assets\darkstyle.jpg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\darkstyle_removebgr.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-
-	  
-    <Resource Include="Assets\Fonts\Audiowide-Regular.ttf" />
-    <Resource Include="Assets\Fonts\RougeScript-Regular.ttf" />
-    <Resource Include="Assets\Fonts\Wallpoet-Regular.ttf" />
-    <Resource Include="Assets\pinky_background.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-	  
-
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Assets\**\*.png" />
+		<Resource Include="Assets\**\*.jpg" />
+		<Resource Include="Assets\Fonts\**\*.ttf" />
+	</ItemGroup>
 
 </Project>
