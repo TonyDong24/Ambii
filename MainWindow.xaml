@@ -40,8 +40,17 @@
 
                     <md:TransitionEffect Kind="ExpandIn" Duration="0:0:0.3" />
                 </md:TransitionerSlide.OpeningEffects>
-
                 <views:FrameSelectionView />
+              
+            </md:TransitionerSlide>
+            <md:TransitionerSlide Background="Black">
+                <md:TransitionerSlide.OpeningEffects>
+                    <md:TransitionEffect Kind="FadeIn" Duration="0:0:0.5" />
+                </md:TransitionerSlide.OpeningEffects>
+            </md:TransitionerSlide>
+
+            <md:TransitionerSlide Background="Black">
+                <TextBlock Text="Đang xử lý ảnh..." Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </md:TransitionerSlide>
 
         </md:Transitioner>

@@ -97,6 +97,11 @@ namespace Ambii.Views
                 DarkMsg.Show("Thông báo", "Vui lòng chọn một khung ảnh bạn yêu thích!");
                 return;
             }
+            if (_selectedFrame == "Single")
+            {
+                DarkMsg.Show("Thông báo", "Frame này vẫn đang cập nhật, vui lòng chọn Frame khác");
+                return;
+            }
 
             // 2. CHECK CAMERA READY LẦN CUỐI (Tuyến phòng thủ cuối cùng)
             if (MainWindow.Instance == null || !MainWindow.Instance.IsCameraReady)

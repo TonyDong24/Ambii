@@ -12,6 +12,7 @@
 		<PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
 		<PackageReference Include="MaterialDesignColors" Version="5.3.0" />
 		<PackageReference Include="MaterialDesignThemes" Version="5.3.0" />
+		<PackageReference Include="System.Drawing.Common" Version="10.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>
