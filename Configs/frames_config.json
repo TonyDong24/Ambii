@@ -2,7 +2,7 @@
     {
         "Id": "ClassicStrip",
         "CameraWidth": 400,
-        "CameraHeight": 600
+        "CameraHeight": 400
     },
     {
         "Id": "Postcard4x6",

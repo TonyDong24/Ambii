@@ -1,37 +1,96 @@
 ﻿<UserControl x:Class="Ambii.Views.CameraView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
              Background="Black">
 
     <Grid x:Name="RootCameraGrid">
-        <Viewbox Stretch="Uniform" Margin="30">
-            <Grid x:Name="CameraArea">
-                <Image x:Name="ImgLivePreview" Stretch="UniformToFill" 
-                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Image Stretch="UniformToFill" IsHitTestVisible="False">
+            <Image.Source>
+                <BitmapImage UriSource="pack://application:,,,/Assets/pinky_background.png" 
+                             DecodePixelWidth="1920" 
+                             CacheOption="OnLoad"/>
+            </Image.Source>
+        </Image>
 
-                <Image x:Name="ImgFrameOverlay" IsHitTestVisible="False" Stretch="Fill" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
-                <Border x:Name="FlashOverlay" Background="White" Opacity="0" IsHitTestVisible="False"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="4" Margin="0,40,0,10">
+                <TextBlock Text="READY TO SMILE?" 
+                           Foreground="White" FontSize="50" FontWeight="ExtraBold"
+                           HorizontalAlignment="Center">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock Text="POSE FOR THE MAGIC" 
+                           Foreground="White" FontSize="20" 
+                           HorizontalAlignment="Center" Opacity="0.7"/>
+            </StackPanel>
+
+            <Viewbox Grid.Row="1" Grid.Column="1" Stretch="Uniform">
+                <Grid x:Name="CameraArea">
+                    <Border x:Name="CameraBorder" CornerRadius="20" ClipToBounds="True" Background="Black">
+                        <Grid>
+                            <Image x:Name="ImgLivePreview" 
+                                   Stretch="UniformToFill" 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center" />
+
+                            <Image x:Name="ImgFrameOverlay" IsHitTestVisible="False" Stretch="Fill" />
+                            <Border x:Name="FlashOverlay" Background="White" Opacity="0" IsHitTestVisible="False"/>
+                        </Grid>
+                    </Border>
+
+                    <TextBlock x:Name="txtCountdown" 
+                               Text="3" Foreground="White" FontSize="200" FontWeight="Bold"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Visibility="Collapsed">
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="0" Color="Black"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Grid>
+            </Viewbox>
+
+            <Grid Grid.Row="1" Grid.Column="2">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Border Background="#44000000" CornerRadius="30" Padding="30,50">
+                        <StackPanel>
+                            <TextBlock Text="PHOTO" Foreground="White" FontSize="24" HorizontalAlignment="Center" Opacity="0.8"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                                <TextBlock x:Name="txtCurrentPhoto" Text="0" 
+                                           Foreground="#F4747E" FontSize="100" FontWeight="Bold"/>
+                                <TextBlock Text="/" Foreground="White" FontSize="50" 
+                                           VerticalAlignment="Bottom" Margin="10,0,10,20" Opacity="0.6"/>
+                                <TextBlock x:Name="txtTotalPhotos" Text="4" 
+                                           Foreground="White" FontSize="50" VerticalAlignment="Bottom" Margin="0,0,0,20"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
             </Grid>
-        </Viewbox>
 
-        <Grid IsHitTestVisible="False">
-            <TextBlock x:Name="txtCountdown" 
-                       Text="3" Foreground="White" FontSize="150" FontWeight="Bold"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock x:Name="txtStatus" Grid.Row="1" Grid.Column="1" 
+                       Text="SMILE!" Foreground="#FF00FF00" FontSize="100" FontWeight="Black"
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50"
                        Visibility="Collapsed">
                 <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="Black"/>
+                    <DropShadowEffect BlurRadius="15" Color="Black"/>
                 </TextBlock.Effect>
             </TextBlock>
-
-            <TextBlock x:Name="txtStatus" Text="SMILE!" Foreground="#FF00FF00" FontSize="60"
-                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50"
-                       Visibility="Collapsed"/>
         </Grid>
     </Grid>
 </UserControl>

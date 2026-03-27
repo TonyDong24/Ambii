@@ -225,7 +225,9 @@
                                 </UniformGrid>
                             </Border>
 
-                            <TextBlock Text="NOIR POSTCARD" FontWeight="Black" FontSize="26" FontStyle="Italic" Foreground="#FE2C55" HorizontalAlignment="Center"/>
+                            <TextBlock Text="NOIR POSTCARD" FontWeight="Black" FontSize="26" 
+                                       FontStyle="Italic" Foreground="#FE2C55" HorizontalAlignment="Center"
+                                       />
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
                                 <TextBlock Text="4 PHOTOS • 4X6 INCH" Foreground="#666" FontSize="11" FontWeight="Bold" VerticalAlignment="Center"/>
                                 <materialDesign:PackIcon x:Name="IconPostcard" Kind="CheckCircle" Foreground="#FE2C55" Width="20" Height="20" Margin="10,0,0,0" VerticalAlignment="Center"/>

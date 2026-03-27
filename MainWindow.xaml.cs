@@ -59,7 +59,7 @@ namespace Ambii
         public void Navigate(int index)
         {
             if (MainTransitioner == null || index < 0 || index >= MainTransitioner.Items.Count) return;
-
+            var currentSettings = SettingsService.Load();
             // --- PHẦN 1: QUẢN LÝ TIMER & CAMERA (PHÒNG THỦ) ---
             if (_inactivityTimer != null) _inactivityTimer.Stop();
 
@@ -80,12 +80,11 @@ namespace Ambii
                 // KHỞI TẠO CAMERAVIEW (Index 2)
                 if (index == 2)
                 {
-                    // 1. [MỚI] Load settings mới nhất từ file (Để lấy MirrorPreview, Brightness...)
-                    var settings = SettingsService.Load();
+
 
                     // 2. [MỚI] "Bơm" settings vào Service ngay lập tức
                     // Việc này giúp CameraService biết có phải lật ảnh (Mirror) hay không trước khi Start
-                    _cameraService.UpdateSettings(settings);
+                    _cameraService.UpdateSettings(currentSettings);
 
                     var cameraView = new CameraView();
 
@@ -107,11 +106,26 @@ namespace Ambii
             // Giải phóng RAM khi về trang chủ (Index 0)
             if (index == 0)
             {
-                var frameSlide = MainTransitioner.Items[1] as TransitionerSlide;
-                if (frameSlide != null) frameSlide.Content = null;
+                // 1. Giải phóng Slide 1
+                if (MainTransitioner.Items[1] is TransitionerSlide fSlide) fSlide.Content = null;
 
-                var cameraSlide = MainTransitioner.Items[2] as TransitionerSlide;
-                if (cameraSlide != null) cameraSlide.Content = null; // Dọn luôn cả CameraView
+                // 2. Giải phóng Slide 2 (CameraView) - Phải hủy Event trước
+                if (MainTransitioner.Items[2] is TransitionerSlide cSlide)
+                {
+                    if (cSlide.Content is CameraView cv)
+                    {
+                        // Hủy đăng ký sự kiện chụp ảnh để GC có thể thu hồi RAM
+                        cv.OnCaptureFinished -= null;
+                        cSlide.Content = null;
+                    }
+                }
+
+                // 3. Khóa "Lễ tân" (Nhóm 3) khi quay về trang chủ
+                if (currentSettings != null && currentSettings.CheckSessionPermission)
+                {
+                    currentSettings.CheckSessionPermission = false;
+                    SettingsService.Save(currentSettings);
+                }
 
                 InactivityPanel.Visibility = Visibility.Collapsed;
             }
@@ -125,9 +139,9 @@ namespace Ambii
 
                 case 2:
                     // BẬT CAMERA KHI VÀO MÀN HÌNH CHỤP
-                    var settings = SettingsService.Load();
-                    _cameraService.Start(settings.CameraName);
+                    _cameraService.Start(currentSettings?.CameraName);
 
+                    //30s cho chọn filter
                     StartCountdown(30);
                     break;
             }

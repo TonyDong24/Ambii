@@ -15,6 +15,9 @@ namespace Ambii.Services
 
         // Event này sẽ đẩy hình ảnh đã được convert sang WPF ra ngoài
         public event EventHandler<BitmapSource> NewFrameAvailable;
+
+        // BIẾN MỚI: Lưu frame sạch để chụp ảnh
+        private BitmapSource _latestRawFrame;
         public void UpdateSettings(AppSettings settings)
         {
             _currentSettings = settings;
@@ -44,20 +47,27 @@ namespace Ambii.Services
             {
                 if (_videoSource == null) return;
 
-                // ĐỌC THẲNG TỪ SETTINGS: Không cần biến trung gian IsMirrored nữa
-                var settings = SettingsService.Load();
-
+                // Dùng Clone để tránh xung đột dữ liệu giữa các luồng
                 using (var bitmap = (Bitmap)eventArgs.Frame.Clone())
                 {
-                    // Kiểm tra trực tiếp biến MirrorPreview từ file cấu hình
+                    // --- PHẦN 1: LƯU ẢNH RAW (DÙNG ĐỂ CHỤP) ---
+                    // Ảnh này giữ nguyên bản gốc, không lật gương để khi chụp ảnh không bị ngược chữ
+                    var rawSource = ConvertToBitmapSource(bitmap);
+                    rawSource.Freeze(); // Quan trọng: Phải Freeze để dùng được ở thread khác
+                    _latestRawFrame = rawSource;
+
+                    // --- PHẦN 2: LƯU ẢNH PREVIEW (DÙNG ĐỂ HIỂN THỊ) ---
+                    // Chỉ lật gương cho ảnh hiển thị trên màn hình để khách soi gương cho tự nhiên
                     if (_currentSettings != null && _currentSettings.MirrorPreview)
                     {
                         bitmap.RotateFlip(RotateFlipType.RotateNoneFlipX);
                     }
 
-                    var bitmapSource = ConvertToBitmapSource(bitmap);
-                    bitmapSource.Freeze();
-                    NewFrameAvailable?.Invoke(this, bitmapSource);
+                    var previewSource = ConvertToBitmapSource(bitmap);
+                    previewSource.Freeze();
+
+                    // Đẩy ảnh đã lật gương ra UI
+                    NewFrameAvailable?.Invoke(this, previewSource);
                 }
             }
             catch (Exception ex)
@@ -108,6 +118,10 @@ namespace Ambii.Services
 
             bitmap.UnlockBits(bitmapData);
             return bitmapSource;
+        }
+        public BitmapSource GetLatestRawFrame()
+        {
+            return _latestRawFrame;
         }
     }
 }

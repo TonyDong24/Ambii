@@ -56,10 +56,16 @@ namespace Ambii.Views
             int countdownSecs = settings?.CountdownSeconds ?? 3;
             string saveDir = settings?.SaveFolder ?? "Photos";
 
+            // HIỂN THỊ TỔNG SỐ ẢNH LÊN UI
+            txtTotalPhotos.Text = totalPhotos.ToString();
+
             List<string> capturedPaths = new List<string>();
 
             for (int i = 1; i <= totalPhotos; i++)
             {
+                // CẬP NHẬT SỐ THỨ TỰ ẢNH ĐANG CHỤP
+                txtCurrentPhoto.Text = i.ToString();
+
                 // --- BƯỚC 1: ĐẾM NGƯỢC ---
                 txtCountdown.Visibility = Visibility.Visible;
                 for (int s = countdownSecs; s > 0; s--)
@@ -76,12 +82,19 @@ namespace Ambii.Views
                 var currentFrame = ImgLivePreview.Source as BitmapSource;
                 if (currentFrame != null)
                 {
-                    // Lưu ảnh và lấy lại đường dẫn file đã lưu
-                    string filePath = await SavePhoto(currentFrame, i, saveDir);
-                    if (!string.IsNullOrEmpty(filePath))
+                    // Đóng băng để luồng khác (Task.Run) có thể đọc được dữ liệu
+                    if (currentFrame.CanFreeze) currentFrame.Freeze();
+
+                    // Truyền thêm 'currentConfig' vào để nó biết tỉ lệ mà Crop
+                    var currentConfig = FrameSelectionView.SelectedFrameData;
+                    if (currentConfig == null)
                     {
-                        capturedPaths.Add(filePath);
+                        // Nếu mất config, lấy đại kích thước ảnh gốc để không bị chia cho 0
+                        currentConfig = new FrameConfig { CameraWidth = currentFrame.PixelWidth, CameraHeight = currentFrame.PixelHeight };
                     }
+                    string filePath = await SavePhoto(currentFrame, i, saveDir, currentConfig);
+
+                    if (!string.IsNullOrEmpty(filePath)) capturedPaths.Add(filePath);
                 }
 
                 // Nghỉ một chút để khách kịp đổi dáng (pose)
@@ -99,27 +112,50 @@ namespace Ambii.Views
             FlashOverlay.BeginAnimation(OpacityProperty, anim);
         }
 
-        private async Task<string> SavePhoto(BitmapSource bitmap, int index, string folderName)
+        private async Task<string> SavePhoto(BitmapSource originalFrame, int index, string folderName, FrameConfig config)
         {
             return await Task.Run(() =>
             {
                 try
                 {
-                    string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-                    string dir = Path.Combine(baseDir, folderName);
+                    // 1. TÍNH TOÁN TỈ LỆ CROP (Giữ nguyên độ nét gốc)
+                    // Giả sử Camera trả về 1920x1080, nhưng khung mong muốn là 1200x1800
+                    double targetAspect = (double)config.CameraWidth / config.CameraHeight;
+                    double frameAspect = (double)originalFrame.PixelWidth / originalFrame.PixelHeight;
+
+                    int cropWidth = originalFrame.PixelWidth;
+                    int cropHeight = originalFrame.PixelHeight;
+                    int x = 0;
+                    int y = 0;
+
+                    if (frameAspect > targetAspect) // Ảnh gốc rộng hơn khung mục tiêu (Crop 2 bên)
+                    {
+                        cropWidth = (int)(originalFrame.PixelHeight * targetAspect);
+                        x = (originalFrame.PixelWidth - cropWidth) / 2;
+                    }
+                    else // Ảnh gốc cao hơn khung mục tiêu (Crop trên dưới)
+                    {
+                        cropHeight = (int)(originalFrame.PixelWidth / targetAspect);
+                        y = (originalFrame.PixelHeight - cropHeight) / 2;
+                    }
+
+                    // 2. THỰC HIỆN CROP TRÊN BITMAP GỐC
+                    var croppedBitmap = new CroppedBitmap(originalFrame, new Int32Rect(x, y, cropWidth, cropHeight));
+
+                    // 3. LƯU ẢNH (Chất lượng 95-100)
+                    string dir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, folderName);
                     if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 
-                    // Tên file: Ambii_NgàyGiờ_SốThứTự.jpg
                     string fileName = $"Ambii_{DateTime.Now:yyyyMMdd_HHmmss}_{index}.jpg";
                     string path = Path.Combine(dir, fileName);
 
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        JpegBitmapEncoder encoder = new JpegBitmapEncoder { QualityLevel = 90 };
-                        encoder.Frames.Add(BitmapFrame.Create(bitmap));
+                        var encoder = new JpegBitmapEncoder { QualityLevel = 95 }; // 95 là mức cân bằng nhất
+                        encoder.Frames.Add(BitmapFrame.Create(croppedBitmap));
                         encoder.Save(stream);
                     }
-                    return path; // Trả về đường dẫn để add vào List
+                    return path;
                 }
                 catch (Exception ex)
                 {
