@@ -19,16 +19,29 @@ namespace Ambii.Views
     {
         // 1. Khai báo Delegate có kèm List<string> để gửi danh sách ảnh về MainWindow
         public event Action<List<string>> OnCaptureFinished;
+        private CameraService _cameraService;
         public CameraView()
         {
             InitializeComponent();
         }
 
-        public void Setup(FrameConfig config)
+        public void Setup(FrameConfig config, CameraService service)
         {
+            _cameraService = service;
             // Ép kích thước theo JSON ông đã định nghĩa
             CameraArea.Width = config.CameraWidth;
             CameraArea.Height = config.CameraHeight;
+
+            // Báo cho Service biết tỉ lệ để nó bắt đầu Crop ảnh từ gốc
+            _cameraService.SetActiveConfig(config);
+
+            // CHỐT: Báo cho CameraService biết Config hiện tại để nó Crop từ gốc
+            // Giả sử ông có tham chiếu đến cameraService
+            // cameraService.SetActiveConfig(config); 
+
+            var settings = SettingsService.Load();
+            int totalPhotos = settings?.PhotoCount ?? 4;
+            txtTotalPhotos.Text = totalPhotos.ToString();
 
             // Load Frame ảnh tương ứng
             string framePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Frames", $"{config.Id}.png");
@@ -64,7 +77,7 @@ namespace Ambii.Views
             for (int i = 1; i <= totalPhotos; i++)
             {
                 // CẬP NHẬT SỐ THỨ TỰ ẢNH ĐANG CHỤP
-                txtCurrentPhoto.Text = i.ToString();
+                txtCurrentPhoto.Text = (i-1).ToString();
 
                 // --- BƯỚC 1: ĐẾM NGƯỢC ---
                 txtCountdown.Visibility = Visibility.Visible;
@@ -79,21 +92,16 @@ namespace Ambii.Views
                 TriggerFlash();
 
                 // --- BƯỚC 3: CHỤP & LƯU ---
-                var currentFrame = ImgLivePreview.Source as BitmapSource;
+                // CHỐT: Lấy trực tiếp frame RAW từ Service (Ảnh 1920x... đã được crop chuẩn trung tâm)
+                var currentFrame = _cameraService?.GetLatestRawFrame();
+
                 if (currentFrame != null)
                 {
-                    // Đóng băng để luồng khác (Task.Run) có thể đọc được dữ liệu
+                    // Fix lỗi luồng khi lưu ảnh
                     if (currentFrame.CanFreeze) currentFrame.Freeze();
 
-                    // Truyền thêm 'currentConfig' vào để nó biết tỉ lệ mà Crop
-                    var currentConfig = FrameSelectionView.SelectedFrameData;
-                    if (currentConfig == null)
-                    {
-                        // Nếu mất config, lấy đại kích thước ảnh gốc để không bị chia cho 0
-                        currentConfig = new FrameConfig { CameraWidth = currentFrame.PixelWidth, CameraHeight = currentFrame.PixelHeight };
-                    }
-                    string filePath = await SavePhoto(currentFrame, i, saveDir, currentConfig);
-
+                    // Gọi hàm lưu đơn giản (tôi sẽ viết ở dưới), không cần truyền config vào tính lại nữa
+                    string filePath = await SavePhotoSimple(currentFrame, i, saveDir);
                     if (!string.IsNullOrEmpty(filePath)) capturedPaths.Add(filePath);
                 }
 
@@ -103,6 +111,7 @@ namespace Ambii.Views
 
             // --- BƯỚC 4: BÁO CÁO KẾT QUẢ ---
             // Gửi danh sách đường dẫn ảnh về cho MainWindow xử lý hiển thị ở Index 3
+            await Task.Delay(200);
             OnCaptureFinished?.Invoke(capturedPaths);
         }
 
@@ -112,37 +121,12 @@ namespace Ambii.Views
             FlashOverlay.BeginAnimation(OpacityProperty, anim);
         }
 
-        private async Task<string> SavePhoto(BitmapSource originalFrame, int index, string folderName, FrameConfig config)
+        private async Task<string> SavePhotoSimple(BitmapSource frame, int index, string folderName)
         {
             return await Task.Run(() =>
             {
                 try
                 {
-                    // 1. TÍNH TOÁN TỈ LỆ CROP (Giữ nguyên độ nét gốc)
-                    // Giả sử Camera trả về 1920x1080, nhưng khung mong muốn là 1200x1800
-                    double targetAspect = (double)config.CameraWidth / config.CameraHeight;
-                    double frameAspect = (double)originalFrame.PixelWidth / originalFrame.PixelHeight;
-
-                    int cropWidth = originalFrame.PixelWidth;
-                    int cropHeight = originalFrame.PixelHeight;
-                    int x = 0;
-                    int y = 0;
-
-                    if (frameAspect > targetAspect) // Ảnh gốc rộng hơn khung mục tiêu (Crop 2 bên)
-                    {
-                        cropWidth = (int)(originalFrame.PixelHeight * targetAspect);
-                        x = (originalFrame.PixelWidth - cropWidth) / 2;
-                    }
-                    else // Ảnh gốc cao hơn khung mục tiêu (Crop trên dưới)
-                    {
-                        cropHeight = (int)(originalFrame.PixelWidth / targetAspect);
-                        y = (originalFrame.PixelHeight - cropHeight) / 2;
-                    }
-
-                    // 2. THỰC HIỆN CROP TRÊN BITMAP GỐC
-                    var croppedBitmap = new CroppedBitmap(originalFrame, new Int32Rect(x, y, cropWidth, cropHeight));
-
-                    // 3. LƯU ẢNH (Chất lượng 95-100)
                     string dir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, folderName);
                     if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 
@@ -151,8 +135,8 @@ namespace Ambii.Views
 
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        var encoder = new JpegBitmapEncoder { QualityLevel = 95 }; // 95 là mức cân bằng nhất
-                        encoder.Frames.Add(BitmapFrame.Create(croppedBitmap));
+                        var encoder = new JpegBitmapEncoder { QualityLevel = 98 }; // Chất lượng cực cao
+                        encoder.Frames.Add(BitmapFrame.Create(frame));
                         encoder.Save(stream);
                     }
                     return path;

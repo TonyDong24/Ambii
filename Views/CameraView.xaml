@@ -7,7 +7,7 @@
     <Grid x:Name="RootCameraGrid">
         <Image Stretch="UniformToFill" IsHitTestVisible="False">
             <Image.Source>
-                <BitmapImage UriSource="pack://application:,,,/Assets/pinky_background.png" 
+                <BitmapImage UriSource="pack://application:,,,/Assets/capture_bgr.png" 
                              DecodePixelWidth="1920" 
                              CacheOption="OnLoad"/>
             </Image.Source>
@@ -15,72 +15,76 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="8*"/>
                 
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Grid.ColumnSpan="4" Margin="0,40,0,10">
-                <TextBlock Text="READY TO SMILE?" 
-                           Foreground="White" FontSize="50" FontWeight="ExtraBold"
-                           HorizontalAlignment="Center">
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
-                    </TextBlock.Effect>
-                </TextBlock>
-                <TextBlock Text="POSE FOR THE MAGIC" 
-                           Foreground="White" FontSize="20" 
-                           HorizontalAlignment="Center" Opacity="0.7"/>
-            </StackPanel>
+            
+            <TextBlock Text="AMBII" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,20,0,0"
+                        FontFamily="pack://application:,,,/Assets/Fonts/#Lilita One"
+                        Foreground="#A85057" FontSize="50" FontWeight="Thin"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center">
+                    
+            </TextBlock>
 
-            <Viewbox Grid.Row="1" Grid.Column="1" Stretch="Uniform">
-                <Grid x:Name="CameraArea">
-                    <Border x:Name="CameraBorder" CornerRadius="20" ClipToBounds="True" Background="Black">
+            <Viewbox Grid.Row="1" Grid.Column="1" Stretch="Uniform" VerticalAlignment="Top" Margin="0,20,0,0">
+
+                <Grid x:Name="CameraArea" Background="#1A1A1A">
+
+                    <Border x:Name="CameraBorder" CornerRadius="20" ClipToBounds="True">
                         <Grid>
                             <Image x:Name="ImgLivePreview" 
-                                   Stretch="UniformToFill" 
+                                   Stretch="Fill" 
+                                   RenderOptions.BitmapScalingMode="HighQuality"
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Center" />
 
                             <Image x:Name="ImgFrameOverlay" IsHitTestVisible="False" Stretch="Fill" />
+
                             <Border x:Name="FlashOverlay" Background="White" Opacity="0" IsHitTestVisible="False"/>
                         </Grid>
                     </Border>
 
                     <TextBlock x:Name="txtCountdown" 
-                               Text="3" Foreground="White" FontSize="200" FontWeight="Bold"
+                               Text="3" Foreground="White" FontSize="200" FontWeight="Light"
                                HorizontalAlignment="Center" VerticalAlignment="Center"
-                               Visibility="Collapsed">
-                        <TextBlock.Effect>
-                            <DropShadowEffect BlurRadius="20" ShadowDepth="0" Color="Black"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
+                               Opacity="0.8"
+                               FontStyle="Italic"
+                               Visibility="Collapsed" />
                 </Grid>
             </Viewbox>
 
             <Grid Grid.Row="1" Grid.Column="2">
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Border Background="#44000000" CornerRadius="30" Padding="30,50">
-                        <StackPanel>
-                            <TextBlock Text="PHOTO" Foreground="White" FontSize="24" HorizontalAlignment="Center" Opacity="0.8"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-                                <TextBlock x:Name="txtCurrentPhoto" Text="0" 
-                                           Foreground="#F4747E" FontSize="100" FontWeight="Bold"/>
-                                <TextBlock Text="/" Foreground="White" FontSize="50" 
-                                           VerticalAlignment="Bottom" Margin="10,0,10,20" Opacity="0.6"/>
-                                <TextBlock x:Name="txtTotalPhotos" Text="4" 
-                                           Foreground="White" FontSize="50" VerticalAlignment="Bottom" Margin="0,0,0,20"/>
+                <Viewbox Width="250" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid Width="384" Height="234">
+                        <Image Source="pack://application:,,,/Assets/label.png" Stretch="Fill"/>
+
+                        <Viewbox Margin="40" Stretch="Uniform">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock x:Name="txtCurrentPhoto" Text="0" Foreground="#F4747E" 
+                                           FontSize="40" 
+                                           FontWeight="Bold"/>
+
+                                <TextBlock Text="/" Foreground="White" FontSize="40" VerticalAlignment="Bottom" FontWeight="Bold"                          
+                                           Margin="4,0,4,10" 
+                                           Opacity="0.6"/>
+
+                                <TextBlock x:Name="txtTotalPhotos" Text="4" Foreground="White" FontWeight="Bold"
+                                           FontSize="40" 
+                                           VerticalAlignment="Bottom" 
+                                           Margin="0,0,0,10"/>
                             </StackPanel>
-                        </StackPanel>
-                    </Border>
-                </StackPanel>
+                        </Viewbox>
+                    </Grid>
+                </Viewbox>
             </Grid>
 
             <TextBlock x:Name="txtStatus" Grid.Row="1" Grid.Column="1" 

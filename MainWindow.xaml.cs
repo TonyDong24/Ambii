@@ -66,7 +66,11 @@ namespace Ambii
             // KIỂM TRA: Nếu đang ở Camera (Index 2) mà đi chỗ khác thì phải TẮT
             if (MainTransitioner.SelectedIndex == 2 && index != 2)
             {
-                _cameraService?.Stop();
+                // CHỈ GỌI STOP NẾU CAMERA CHƯA BỊ DỪNG (Tránh gọi chồng lên nhau)
+                if (_cameraService != null)
+                {
+                    _cameraService.Stop();
+                }
             }
 
             // --- PHẦN 2: TỐI ƯU RAM & KHỞI TẠO VIEW ---
@@ -92,7 +96,7 @@ namespace Ambii
                     var currentConfig = FrameSelectionView.SelectedFrameData;
                     if (currentConfig != null)
                     {
-                        cameraView.Setup(currentConfig);
+                        cameraView.Setup(currentConfig, _cameraService);
                     }
 
                     // 3. [TỐI ƯU] Gán instance này vào Content của Slide
@@ -115,7 +119,7 @@ namespace Ambii
                     if (cSlide.Content is CameraView cv)
                     {
                         // Hủy đăng ký sự kiện chụp ảnh để GC có thể thu hồi RAM
-                        cv.OnCaptureFinished -= null;
+                        
                         cSlide.Content = null;
                     }
                 }
@@ -142,7 +146,7 @@ namespace Ambii
                     _cameraService.Start(currentSettings?.CameraName);
 
                     //30s cho chọn filter
-                    StartCountdown(30);
+                    StartCountdown(5);
                     break;
             }
 
@@ -332,7 +336,7 @@ namespace Ambii
                 handler = (photoPaths) =>
                 {
                     cv.OnCaptureFinished -= handler; // Gỡ bỏ sự kiện sau khi xong để tránh rác RAM
-                    tcs.SetResult(photoPaths);       // Giải phóng lệnh đợi bên dưới
+                    tcs.TrySetResult(photoPaths);       // Giải phóng lệnh đợi bên dưới
                 };
                 cv.OnCaptureFinished += handler;
 
@@ -341,6 +345,12 @@ namespace Ambii
 
                 // 5. ĐỨNG ĐỢI tại đây cho đến khi có danh sách ảnh trả về
                 var finalPhotos = await tcs.Task;
+
+                // --- CHIÊU THỨ 1: Đợi 1 nhịp để giải phóng luồng xử lý ảnh cuối ---
+                await Task.Delay(200);
+
+                // --- CHIÊU THỨ 2: Đảm bảo Camera dừng hẳn trước khi trượt Slide ---
+                _cameraService?.Stop();
 
                 // 6. CHỤP XONG RỒI MỚI NHẢY TRANG
                 Navigate(3);
