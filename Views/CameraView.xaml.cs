@@ -3,12 +3,14 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Collections.Generic; // Cần thiết cho List<string>
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Animation; // Cực kỳ quan trọng để chạy Flash
 using Ambii.Models;
 using Ambii.Services;
+using System.Collections.ObjectModel;
 
 namespace Ambii.Views
 {
@@ -20,9 +22,11 @@ namespace Ambii.Views
         // 1. Khai báo Delegate có kèm List<string> để gửi danh sách ảnh về MainWindow
         public event Action<List<string>> OnCaptureFinished;
         private CameraService _cameraService;
+        private ObservableCollection<BitmapImage> _recentThumbnails = new ObservableCollection<BitmapImage>();
         public CameraView()
         {
             InitializeComponent();
+            ListRecentPhotos.ItemsSource = _recentThumbnails;
         }
 
         public void Setup(FrameConfig config, CameraService service)
@@ -50,6 +54,17 @@ namespace Ambii.Views
                 ImgFrameOverlay.Source = new BitmapImage(new Uri(framePath));
             }
         }
+        private BitmapImage CreateThumbnail(string path)
+        {
+            var bi = new BitmapImage();
+            bi.BeginInit();
+            bi.UriSource = new Uri(path);
+            bi.DecodePixelWidth = 200; // Giảm độ phân giải để nhẹ RAM
+            bi.CacheOption = BitmapCacheOption.OnLoad;
+            bi.EndInit();
+            bi.Freeze();
+            return bi;
+        }
 
         // Hàm này để MainWindow gọi và đổ hình vào
         public void UpdatePreview(BitmapSource source)
@@ -70,27 +85,31 @@ namespace Ambii.Views
             string saveDir = settings?.SaveFolder ?? "Photos";
 
             // HIỂN THỊ TỔNG SỐ ẢNH LÊN UI
-            txtTotalPhotos.Text = totalPhotos.ToString();
+            Dispatcher.Invoke(() => {
+                _recentThumbnails.Clear();
+                PreviewContainer.Visibility = Visibility.Collapsed;
+                txtTotalPhotos.Text = totalPhotos.ToString();
+            });
 
             List<string> capturedPaths = new List<string>();
 
             for (int i = 1; i <= totalPhotos; i++)
             {
                 // CẬP NHẬT SỐ THỨ TỰ ẢNH ĐANG CHỤP
-                txtCurrentPhoto.Text = (i-1).ToString();
+                Dispatcher.Invoke(() => txtCurrentPhoto.Text = i.ToString());
 
                 // --- BƯỚC 1: ĐẾM NGƯỢC ---
-                txtCountdown.Visibility = Visibility.Visible;
+                Dispatcher.Invoke(() => txtCountdown.Visibility = Visibility.Visible);
                 for (int s = countdownSecs; s > 0; s--)
                 {
-                    txtCountdown.Text = s.ToString();
+                    Dispatcher.Invoke(() => txtCountdown.Text = s.ToString());
                     await Task.Delay(1000); // 1 giây mỗi số
                 }
-                txtCountdown.Visibility = Visibility.Collapsed;
+                Dispatcher.Invoke(() => txtCountdown.Visibility = Visibility.Collapsed);
 
                 // --- BƯỚC 2: NHÁY FLASH ---
-                TriggerFlash();
-
+                var flashTask = TriggerFlashAsync();
+                await Task.Delay(50);
                 // --- BƯỚC 3: CHỤP & LƯU ---
                 // CHỐT: Lấy trực tiếp frame RAW từ Service (Ảnh 1920x... đã được crop chuẩn trung tâm)
                 var currentFrame = _cameraService?.GetLatestRawFrame();
@@ -102,8 +121,29 @@ namespace Ambii.Views
 
                     // Gọi hàm lưu đơn giản (tôi sẽ viết ở dưới), không cần truyền config vào tính lại nữa
                     string filePath = await SavePhotoSimple(currentFrame, i, saveDir);
-                    if (!string.IsNullOrEmpty(filePath)) capturedPaths.Add(filePath);
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        capturedPaths.Add(filePath);
+
+                        // CẬP NHẬT UI HIỂN THỊ 4 ẢNH GẦN NHẤT
+                        Dispatcher.Invoke(() => {
+                            var thumb = CreateThumbnail(filePath);
+                            _recentThumbnails.Add(thumb);
+                            if (PreviewContainer.Visibility != Visibility.Visible)
+                            {
+                                PreviewContainer.Visibility = Visibility.Visible;
+                            }
+                            // Nếu chụp đến tấm thứ 5, tự động xóa tấm đầu tiên để luôn giữ 4 tấm mới nhất
+                            if (_recentThumbnails.Count > 4)
+                            {
+                                _recentThumbnails.RemoveAt(0);
+                            }
+                        });
+                    }
                 }
+
+                // --- BƯỚC 3: ĐỢI FLASH TẮT HẲN RỒI MỚI NGHỈ ---
+                await flashTask; // Đợi hiệu ứng mờ dần kết thúc hoàn toàn
 
                 // Nghỉ một chút để khách kịp đổi dáng (pose)
                 await Task.Delay(500);
@@ -115,10 +155,22 @@ namespace Ambii.Views
             OnCaptureFinished?.Invoke(capturedPaths);
         }
 
-        private void TriggerFlash()
+        private Task TriggerFlashAsync()
         {
-            var anim = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(400));
+            var tcs = new TaskCompletionSource<bool>();
+            var anim = new DoubleAnimation
+            {
+                From = 0.8,
+                To = 0,
+                Duration = TimeSpan.FromMilliseconds(1000), // Chỉnh lại 800ms cho gọn
+                EasingFunction = new QuarticEase { EasingMode = EasingMode.EaseOut }
+            };
+
+            // Khi animation kết thúc thì mới cho chạy tiếp
+            anim.Completed += (s, e) => tcs.SetResult(true);
+
             FlashOverlay.BeginAnimation(OpacityProperty, anim);
+            return tcs.Task;
         }
 
         private async Task<string> SavePhotoSimple(BitmapSource frame, int index, string folderName)

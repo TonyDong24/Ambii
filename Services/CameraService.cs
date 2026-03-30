@@ -20,6 +20,7 @@ namespace Ambii.Services
         // BIẾN MỚI: Lưu frame sạch để chụp ảnh
         private BitmapSource _latestRawFrame;
         private FrameConfig _activeConfig;
+        private readonly object _frameLock = new object(); // Thêm cái khóa này
         public void UpdateSettings(AppSettings settings)
         {
             _currentSettings = settings;
@@ -89,7 +90,10 @@ namespace Ambii.Services
 
                         var rawSource = ConvertToBitmapSource(croppedBitmap);
                         rawSource.Freeze();
-                        _latestRawFrame = rawSource;
+                        lock (_frameLock)
+                        {
+                            _latestRawFrame = rawSource;
+                        }
 
                         // 3. TẠO ẢNH PREVIEW NHẸ & MƯỢT (ĐỂ HIỂN THỊ)
                         // Canon M50 gửi 1920x1080 về, ta hạ xuống 640x960 (hoặc tỉ lệ tương ứng) cho mượt
@@ -139,15 +143,25 @@ namespace Ambii.Services
         {
             if (_videoSource != null)
             {
-                // 1. Ngắt nhận hình ngay lập tức để giải phóng luồng UI
                 _videoSource.NewFrame -= VideoSource_NewFrame;
-
                 if (_videoSource.IsRunning)
                 {
                     _videoSource.SignalToStop();
-                    // Thay vì WaitForStop(), ta để nó tự đóng từ từ hoặc dùng Task.Run
                 }
                 _videoSource = null;
+            }
+
+            // CHỈ CẦN GÁN NULL LÀ XONG, KHÔNG DÙNG DISPOSE
+            if (_latestRawFrame != null)
+            {
+                _latestRawFrame = null;
+            }
+        }
+        public void ClearCache()
+        {
+            lock (_frameLock) // Thêm cái này
+            {
+                _latestRawFrame = null;
             }
         }
 
@@ -175,6 +189,7 @@ namespace Ambii.Services
                     bitmapData.Scan0,
                     bitmapData.Stride * bitmapData.Height,
                     bitmapData.Stride);
+                
 
                 return bitmapSource;
             }
@@ -185,8 +200,14 @@ namespace Ambii.Services
         }
         public BitmapSource GetLatestRawFrame()
         {
-            return _latestRawFrame;
+            lock (_frameLock)
+            {
+                return _latestRawFrame;
+            }
         }
+
+
+
         public void SetActiveConfig(FrameConfig config)
         {
             _activeConfig = config;
