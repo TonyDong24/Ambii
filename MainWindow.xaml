@@ -50,7 +50,7 @@
             </md:TransitionerSlide>
 
             <md:TransitionerSlide Background="Black">
-                <TextBlock Text="Đang xử lý ảnh..." Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <views:PhotoSelectionView x:Name="SelectionView" />
             </md:TransitionerSlide>
 
         </md:Transitioner>

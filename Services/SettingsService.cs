@@ -57,33 +57,80 @@ namespace Ambii.Services
 
     public class ConfigService
     {
-        public List<FrameConfig> Frames { get; private set; }
+        public List<FrameConfig> Frames { get; private set; } = new List<FrameConfig>();
 
         public void LoadConfigs()
         {
             try
             {
-                // Lấy đường dẫn thư mục đang chạy (Debug hoặc thư mục cài đặt)
+                // 1. Dùng list tạm để tránh việc UI bị trống hình khi đang load
+                var tempFrames = new List<FrameConfig>();
                 string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+                string configsRoot = Path.Combine(baseDir, "Configs");
 
-                // Kết hợp thành đường dẫn: Debug/Configs/frames_config.json
-                string path = Path.Combine(baseDir, "Configs", "frames_config.json");
+                // Quét folder Generic (Phổ thông)
+                ScanSubFolder(Path.Combine(configsRoot, "Generic"), true, tempFrames);
 
-                if (File.Exists(path))
-                {
-                    // Dùng FileShare.ReadWrite để máy lễ tân có thể mở sửa qua mạng mà App không bị crash
-                    using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                    using (var reader = new StreamReader(stream))
-                    {
-                        string json = reader.ReadToEnd();
-                        Frames = JsonSerializer.Deserialize<List<FrameConfig>>(json);
-                    }
-                }
+                // Quét folder Special (Đặc biệt)
+                ScanSubFolder(Path.Combine(configsRoot, "Special"), false, tempFrames);
+
+                // 2. Chỉ cập nhật danh sách chính khi đã quét xong xuôi
+                Frames = tempFrames;
+                System.Diagnostics.Debug.WriteLine($"[Config] Live Update thành công: {Frames.Count} frames.");
             }
             catch (Exception ex)
             {
-                // Ghi log lỗi nếu có (ví dụ file JSON sai định dạng)
-                System.Diagnostics.Debug.WriteLine($"Lỗi load config: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[CRITICAL ERROR] Lỗi tổng khi quét folder: {ex.Message}");
+            }
+        }
+
+        private void ScanSubFolder(string folderPath, bool isGeneric, List<FrameConfig> targetList)
+        {
+            if (!Directory.Exists(folderPath)) return;
+
+            var files = Directory.GetFiles(folderPath, "*.json");
+
+            foreach (var file in files)
+            {
+                try
+                {
+                    // SỬ DỤNG FILESHARE.READWRITE ĐỂ ADMIN VỪA SAVE APP VẪN ĐỌC ĐƯỢC
+                    using (var stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    using (var reader = new StreamReader(stream))
+                    {
+                        string json = reader.ReadToEnd();
+
+                        // KIỂM TRA 1: Nếu file đang trống (do Admin vừa xóa trắng để gõ lại) thì bỏ qua
+                        if (string.IsNullOrWhiteSpace(json)) continue;
+
+                        // KIỂM TRA 2: Deserialize an toàn
+                        var config = System.Text.Json.JsonSerializer.Deserialize<FrameConfig>(json);
+
+                        if (config != null)
+                        {
+                            config.IsGeneric = isGeneric;
+
+                            // TỰ ĐỘNG GÁN PATH NẾU TRONG JSON ĐANG ĐỂ TRỐNG (Cho tiện quản lý)
+                            if (isGeneric && string.IsNullOrEmpty(config.StylesFolder))
+                                config.StylesFolder = Path.Combine("Assets", "Frames", config.Id);
+
+                            if (!isGeneric && string.IsNullOrEmpty(config.FramePath))
+                                config.FramePath = Path.Combine("Assets", "Frames", "Special", $"{config.Id}.png");
+
+                            targetList.Add(config);
+                        }
+                    }
+                }
+                catch (System.Text.Json.JsonException)
+                {
+                    // Nếu Admin gõ sai cú pháp JSON (thiếu dấu phẩy, ngoặc...), App chỉ bỏ qua file này
+                    System.Diagnostics.Debug.WriteLine($"[JSON ERROR] File {Path.GetFileName(file)} sai định dạng, đang đợi Admin sửa xong...");
+                }
+                catch (Exception ex)
+                {
+                    // Các lỗi truy cập file khác
+                    System.Diagnostics.Debug.WriteLine($"[FILE ERROR] Không thể đọc {Path.GetFileName(file)}: {ex.Message}");
+                }
             }
         }
     }

@@ -105,6 +105,11 @@ namespace Ambii
                     // Lưu ý: Đừng gọi _cameraService.Start() ở đây. 
                     // Hãy để nó ở switch(index) bên dưới như code cũ của ông để đảm bảo UI đã render xong.
                 }
+
+                if (index == 3)
+                {
+                    targetSlide.Content = new PhotoSelectionView();
+                }
             }
 
             // Giải phóng RAM khi về trang chủ (Index 0)
@@ -352,7 +357,21 @@ namespace Ambii
                 // --- CHIÊU THỨ 2: Đảm bảo Camera dừng hẳn trước khi trượt Slide ---
                 _cameraService?.Stop();
 
-                // 6. CHỤP XONG RỒI MỚI NHẢY TRANG
+                // Lấy Slide số 3 ra để bơm ảnh
+                var targetSlide = MainTransitioner.Items[3] as MaterialDesignThemes.Wpf.Transitions.TransitionerSlide;
+
+                // Vì ông dùng Lazy Load, nên phải đảm bảo Content đã được tạo trước khi gọi ReceivePhotos
+                if (targetSlide.Content == null)
+                {
+                    targetSlide.Content = new PhotoSelectionView();
+                }
+
+                if (targetSlide.Content is PhotoSelectionView psView)
+                {
+                    psView.ReceivePhotos(finalPhotos); // Đẩy 8 đường dẫn ảnh sang View mới
+                }
+
+                // Cuối cùng mới nhảy trang
                 Navigate(3);
 
                 // Gợi ý: Sau này ông có thể truyền 'finalPhotos' vào View ở Index 3 tại đây

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\Csharp_learning\Ambii\App.xaml
-5549958312
-231793830901
-13-1044530502
+6-776382388
+241162937301
+14158779564
 207-299135670
-MainWindow.xaml;Views\CameraView.xaml;Views\FrameSelectionView.xaml;Views\SettingsWindow.xaml;Views\StartView.xaml;
+MainWindow.xaml;Views\CameraView.xaml;Views\FrameSelectionView.xaml;Views\PhotoSelectionView.xaml;Views\SettingsWindow.xaml;Views\StartView.xaml;
 
 False
 

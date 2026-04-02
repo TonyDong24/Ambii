@@ -111,3 +111,6 @@ D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\System.Private.Windows.GdiPlus
 D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\CameraView.baml
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\CameraView.g.cs
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\PhotoSelectionView.g.cs
+D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\PhotoSelectionView.baml
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Configs\Generic\frames_config.json

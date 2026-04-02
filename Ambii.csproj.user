@@ -13,6 +13,9 @@
     <Compile Update="Views\FrameSelectionView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\PhotoSelectionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\SettingsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\FrameSelectionView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PhotoSelectionView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\StartView.xaml">
