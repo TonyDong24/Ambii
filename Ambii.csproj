@@ -16,9 +16,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Configs\frames_config.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
 		<Content Include="Configs\Generic\frames_config.json">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
@@ -33,9 +30,15 @@
 
 	<ItemGroup>
 	  <Folder Include="Assets\Frames\ClassicStrip\" />
-	  <Folder Include="Assets\Frames\Special\" />
 	  <Folder Include="Assets\Frames\PostCard4x6\" />
+	  <Folder Include="Assets\Frames\Special\" />
 	  <Folder Include="Configs\Special\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\FrameSelectionView.xaml.cs">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

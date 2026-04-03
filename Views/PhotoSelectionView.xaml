@@ -23,7 +23,7 @@
                                     <Border x:Name="PhotoBorder" CornerRadius="8" ClipToBounds="True" 
                                             BorderBrush="{Binding BorderColor}" BorderThickness="4">
                                         <Grid>
-                                            <Image Source="{Binding thumbnail}" Stretch="UniformToFill" Height="150"/>
+                                            <Image Source="{Binding thumbnail}" Stretch="Uniform" Height="150"/>
 
                                             <Border Background="#CCF4747E" Width="40" Height="40" 
                                                     HorizontalAlignment="Right" VerticalAlignment="Top" 

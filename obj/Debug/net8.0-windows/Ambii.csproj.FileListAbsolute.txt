@@ -64,7 +64,6 @@ E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.bam
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.g.cs
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii_MarkupCompile.lref
-D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Configs\frames_config.json
 D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Ambii.exe
 D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Ambii.deps.json
 D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Ambii.runtimeconfig.json
@@ -114,3 +113,4 @@ D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\CameraView.g.cs
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\PhotoSelectionView.g.cs
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Views\PhotoSelectionView.baml
 D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Configs\Generic\frames_config.json
+D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Views\FrameSelectionView.xaml.cs

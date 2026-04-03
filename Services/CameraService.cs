@@ -175,21 +175,26 @@ namespace Ambii.Services
             {
                 // 1. Xác định định dạng màu chuẩn dựa trên Bitmap gốc để tránh mất màu (đen trắng)
                 System.Windows.Media.PixelFormat pf = System.Windows.Media.PixelFormats.Bgr24;
-                if (bitmap.PixelFormat == System.Drawing.Imaging.PixelFormat.Format32bppArgb)
+                if (bitmap.PixelFormat == System.Drawing.Imaging.PixelFormat.Format32bppArgb || bitmap.PixelFormat == System.Drawing.Imaging.PixelFormat.Format32bppPArgb)
                     pf = System.Windows.Media.PixelFormats.Bgra32;
 
                 // 2. Chốt Stride: Đây là chỗ gây ra sọc màu nếu tính sai. 
                 // bitmapData.Stride là giá trị chuẩn từ bộ nhớ của Bitmap.
+                double finalDpi = (_activeConfig != null && _activeConfig.DPI > 0)
+                          ? _activeConfig.DPI
+                          : 96; // Mặc định 96 nếu config lỗi
+
+                // 3. Tạo BitmapSource với DPI chuẩn
                 var bitmapSource = BitmapSource.Create(
                     bitmapData.Width,
                     bitmapData.Height,
-                    96, 96,
+                    finalDpi,
+                    finalDpi, // Dùng cùng 1 chỉ số cho cả X và Y
                     pf,
                     null,
                     bitmapData.Scan0,
                     bitmapData.Stride * bitmapData.Height,
                     bitmapData.Stride);
-                
 
                 return bitmapSource;
             }

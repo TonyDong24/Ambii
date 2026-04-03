@@ -94,41 +94,47 @@ namespace Ambii.Services
             {
                 try
                 {
-                    // SỬ DỤNG FILESHARE.READWRITE ĐỂ ADMIN VỪA SAVE APP VẪN ĐỌC ĐƯỢC
                     using (var stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                     using (var reader = new StreamReader(stream))
                     {
                         string json = reader.ReadToEnd();
-
-                        // KIỂM TRA 1: Nếu file đang trống (do Admin vừa xóa trắng để gõ lại) thì bỏ qua
                         if (string.IsNullOrWhiteSpace(json)) continue;
 
-                        // KIỂM TRA 2: Deserialize an toàn
-                        var config = System.Text.Json.JsonSerializer.Deserialize<FrameConfig>(json);
-
-                        if (config != null)
+                        // 1. Phải dùng List vì JSON của ông là mảng []
+                        // 2. Thêm PropertyNameCaseInsensitive để không lo lỗi hoa/thường giữa JSON và C#
+                        var options = new System.Text.Json.JsonSerializerOptions
                         {
-                            config.IsGeneric = isGeneric;
+                            PropertyNameCaseInsensitive = true
+                        };
 
-                            // TỰ ĐỘNG GÁN PATH NẾU TRONG JSON ĐANG ĐỂ TRỐNG (Cho tiện quản lý)
-                            if (isGeneric && string.IsNullOrEmpty(config.StylesFolder))
-                                config.StylesFolder = Path.Combine("Assets", "Frames", config.Id);
+                        var configs = System.Text.Json.JsonSerializer.Deserialize<List<FrameConfig>>(json, options);
 
-                            if (!isGeneric && string.IsNullOrEmpty(config.FramePath))
-                                config.FramePath = Path.Combine("Assets", "Frames", "Special", $"{config.Id}.png");
+                        if (configs != null)
+                        {
+                            foreach (var config in configs)
+                            {
+                                if (config == null) continue;
 
-                            targetList.Add(config);
+                                config.IsGeneric = isGeneric;
+
+                                // TỰ ĐỘNG GÁN PATH (Giữ nguyên logic của ông)
+                                if (isGeneric && string.IsNullOrEmpty(config.StylesFolder))
+                                    config.StylesFolder = Path.Combine("Assets", "Frames", config.Id ?? "");
+
+                                if (!isGeneric && string.IsNullOrEmpty(config.FramePath))
+                                    config.FramePath = Path.Combine("Assets", "Frames", "Special", $"{config.Id}.png");
+
+                                targetList.Add(config);
+                            }
                         }
                     }
                 }
-                catch (System.Text.Json.JsonException)
+                catch (System.Text.Json.JsonException ex)
                 {
-                    // Nếu Admin gõ sai cú pháp JSON (thiếu dấu phẩy, ngoặc...), App chỉ bỏ qua file này
-                    System.Diagnostics.Debug.WriteLine($"[JSON ERROR] File {Path.GetFileName(file)} sai định dạng, đang đợi Admin sửa xong...");
+                    System.Diagnostics.Debug.WriteLine($"[JSON ERROR] File {Path.GetFileName(file)} sai định dạng: {ex.Message}");
                 }
                 catch (Exception ex)
                 {
-                    // Các lỗi truy cập file khác
                     System.Diagnostics.Debug.WriteLine($"[FILE ERROR] Không thể đọc {Path.GetFileName(file)}: {ex.Message}");
                 }
             }

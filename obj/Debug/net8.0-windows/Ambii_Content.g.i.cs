@@ -30,7 +30,6 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("robotocondensed-light.ttf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("robotocondensed-lightitalic.ttf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("robotocondensed-regular.ttf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("configs/frames_config.json")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("configs/generic/frames_config.json")]
 
 

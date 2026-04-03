@@ -97,6 +97,11 @@ namespace Ambii.Views
                 DarkMsg.Show("Thông báo", "Vui lòng chọn một khung ảnh bạn yêu thích!");
                 return;
             }
+            if (SelectedFrameData == null)
+            {
+                DarkMsg.Show("Lỗi dữ liệu", "Không tìm thấy cấu hình cho khung ảnh này. Vui lòng chọn lại!");
+                return;
+            }
             if (_selectedFrame == "Single")
             {
                 DarkMsg.Show("Thông báo", "Frame này vẫn đang cập nhật, vui lòng chọn Frame khác");
