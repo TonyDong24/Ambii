@@ -43,9 +43,37 @@
             </DockPanel>
         </Border>
 
-        <Grid Grid.Column="1" Margin="40,0">
-            <TextBlock Text="PREVIEW AREA" Foreground="#333" FontSize="40" 
-                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid Grid.Column="1" Margin="40,0" x:Name="PreviewContainer">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="{Binding Path=FinalFramePath, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+               x:Name="MainFrameImage" 
+               Stretch="Uniform"/>
+
+                <Viewbox Stretch="Uniform" 
+                 Width="{Binding ElementName=MainFrameImage, Path=ActualWidth}"
+                 Height="{Binding ElementName=MainFrameImage, Path=ActualHeight}">
+
+                    <ItemsControl ItemsSource="{Binding Path=PreviewSlots, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Canvas Width="1200" Height="1800" Background="Transparent"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding ImageSource}" 
+                               Stretch="UniformToFill"
+                               Width="{Binding Config.Width}" 
+                               Height="{Binding Config.Height}">
+                                    <Image.RenderTransform>
+                                        <TranslateTransform X="{Binding Config.X}" Y="{Binding Config.Y}"/>
+                                    </Image.RenderTransform>
+                                </Image>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Viewbox>
+            </Grid>
         </Grid>
 
         <Border Grid.Column="2" Background="#1E1E1E" CornerRadius="15" Padding="10">

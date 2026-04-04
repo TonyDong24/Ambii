@@ -29,7 +29,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Assets\Frames\ClassicStrip\" />
 	  <Folder Include="Assets\Frames\PostCard4x6\" />
 	  <Folder Include="Assets\Frames\Special\" />
 	  <Folder Include="Configs\Special\" />
@@ -39,6 +38,12 @@
 	  <Compile Update="Views\FrameSelectionView.xaml.cs">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Update="Assets\Frames\ClassicStrip\Ambii_cut.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup>
 
 </Project>
