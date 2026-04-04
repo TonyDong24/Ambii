@@ -21,6 +21,7 @@ namespace Ambii.Services
         private BitmapSource _latestRawFrame;
         private FrameConfig _activeConfig;
         private readonly object _frameLock = new object(); // Thêm cái khóa này
+        public List<string> CapturedPhotoPaths { get; set; } = new List<string>();
         public void UpdateSettings(AppSettings settings)
         {
             _currentSettings = settings;

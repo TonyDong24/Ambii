@@ -108,7 +108,14 @@ namespace Ambii
 
                 if (index == 3)
                 {
-                    targetSlide.Content = new PhotoSelectionView();
+                    var view = new PhotoSelectionView();
+                    targetSlide.Content = view;
+
+                    var paths = _cameraService.CapturedPhotoPaths;
+                    var config = FrameSelectionView.SelectedFrameData;
+
+                    // Đẩy dữ liệu vào "động cơ" Service
+                    
                 }
             }
 
