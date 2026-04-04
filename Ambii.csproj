@@ -26,6 +26,9 @@
 		<Resource Include="Assets\**\*.png" />
 		<Resource Include="Assets\**\*.jpg" />
 		<Resource Include="Assets\Fonts\**\*.ttf" />
+		<Content Include="Assets\Frames\**\*.png;Assets\Frames\**\*.jpg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 	<ItemGroup>

@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\Csharp_learning\\Ambii\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\ambii.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:ambii.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\models\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:models\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\frameselectionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\frameselectionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\services\\photoselectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:services\\photoselectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -23,16 +35,8 @@
       "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:services\\cameraservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\frameselectionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:views\\frameselectionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\models\\frameconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:models\\frameconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\models\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|solutionrelative:models\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75C879C1-C132-44CE-A536-86F82AEBB876}|Ambii.csproj|d:\\csharp_learning\\ambii\\views\\frameselectionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -114,12 +118,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Ambii",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Ambii.csproj",
+              "RelativeDocumentMoniker": "Ambii.csproj",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\Ambii.csproj",
+              "RelativeToolTip": "Ambii.csproj",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACkAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-04T08:58:35.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "PhotoSelectionService.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Services\\PhotoSelectionService.cs",
               "RelativeDocumentMoniker": "Services\\PhotoSelectionService.cs",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Services\\PhotoSelectionService.cs",
               "RelativeToolTip": "Services\\PhotoSelectionService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAYwBoAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA1wB8AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-04T06:54:14.287Z",
               "EditorCaption": ""
@@ -127,32 +144,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PhotoSelectionView.xaml.cs",
-              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\PhotoSelectionView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\PhotoSelectionView.xaml.cs",
-              "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\PhotoSelectionView.xaml.cs",
-              "RelativeToolTip": "Views\\PhotoSelectionView.xaml.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAUwCAAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T03:07:06.983Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "FrameSelectionView.xaml.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\FrameSelectionView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\FrameSelectionView.xaml.cs",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\FrameSelectionView.xaml.cs",
               "RelativeToolTip": "Views\\FrameSelectionView.xaml.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAYwHkAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAcwEwAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T06:24:22.88Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "CameraService.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Services\\CameraService.cs",
               "RelativeDocumentMoniker": "Services\\CameraService.cs",
@@ -160,12 +164,11 @@
               "RelativeToolTip": "Services\\CameraService.cs",
               "ViewState": "AgIAAGEAAAAAAAAAAAAgwEEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T02:19:50.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T02:19:50.465Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "frames_config.json",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Configs\\Generic\\frames_config.json",
               "RelativeDocumentMoniker": "Configs\\Generic\\frames_config.json",
@@ -173,37 +176,22 @@
               "RelativeToolTip": "Configs\\Generic\\frames_config.json",
               "ViewState": "AgIAAAwAAAAAAAAAAAAswDMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-01T04:11:32.438Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-01T04:11:32.438Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "PhotoSelectionView.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\PhotoSelectionView.xaml",
               "RelativeDocumentMoniker": "Views\\PhotoSelectionView.xaml",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\PhotoSelectionView.xaml",
               "RelativeToolTip": "Views\\PhotoSelectionView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-01T02:59:25.295Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-01T02:59:25.295Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FrameConfig.cs",
-              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Models\\FrameConfig.cs",
-              "RelativeDocumentMoniker": "Models\\FrameConfig.cs",
-              "ToolTip": "D:\\Csharp_learning\\Ambii\\Models\\FrameConfig.cs",
-              "RelativeToolTip": "Models\\FrameConfig.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAxwCoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T08:51:38.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "AppSettings.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Models\\AppSettings.cs",
               "RelativeDocumentMoniker": "Models\\AppSettings.cs",
@@ -216,19 +204,42 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PhotoSelectionView.xaml.cs",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\PhotoSelectionView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\PhotoSelectionView.xaml.cs",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\PhotoSelectionView.xaml.cs",
+              "RelativeToolTip": "Views\\PhotoSelectionView.xaml.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAUwCAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:07:06.983Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "FrameConfig.cs",
+              "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Models\\FrameConfig.cs",
+              "RelativeDocumentMoniker": "Models\\FrameConfig.cs",
+              "ToolTip": "D:\\Csharp_learning\\Ambii\\Models\\FrameConfig.cs",
+              "RelativeToolTip": "Models\\FrameConfig.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAxwCoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T08:51:38.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "FrameSelectionView.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\FrameSelectionView.xaml",
               "RelativeDocumentMoniker": "Views\\FrameSelectionView.xaml",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\FrameSelectionView.xaml",
               "RelativeToolTip": "Views\\FrameSelectionView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-16T06:39:09.389Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T06:39:09.389Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "SettingsService.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Services\\SettingsService.cs",
               "RelativeDocumentMoniker": "Services\\SettingsService.cs",
@@ -236,12 +247,11 @@
               "RelativeToolTip": "Services\\SettingsService.cs",
               "ViewState": "AgIAAFkAAAAAAAAAAAAswE0AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T03:16:29.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T03:16:29.308Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
@@ -249,12 +259,11 @@
               "RelativeToolTip": "MainWindow.xaml.cs",
               "ViewState": "AgIAAGEAAAAAAAAAAAAewG4AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T05:56:59.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T05:56:59.577Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "StartView.xaml.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\StartView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\StartView.xaml.cs",
@@ -262,24 +271,22 @@
               "RelativeToolTip": "Views\\StartView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T03:13:13.407Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T03:13:13.407Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "CameraView.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\CameraView.xaml",
               "RelativeDocumentMoniker": "Views\\CameraView.xaml",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\Views\\CameraView.xaml",
               "RelativeToolTip": "Views\\CameraView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-26T02:24:02.907Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T02:24:02.907Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "CameraView.xaml.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\CameraView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\CameraView.xaml.cs",
@@ -287,12 +294,11 @@
               "RelativeToolTip": "Views\\CameraView.xaml.cs",
               "ViewState": "AgIAAKcAAAAAAAAAAAAqwM0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T02:26:48.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T02:26:48.762Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": ".gitignore",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -304,19 +310,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "App.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-13T08:16:34.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T08:16:34.609Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Ambii_cut.png",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Assets\\Frames\\ClassicStrip\\Ambii_cut.png",
               "RelativeDocumentMoniker": "Assets\\Frames\\ClassicStrip\\Ambii_cut.png",
@@ -327,7 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "StartView.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\StartView.xaml",
               "RelativeDocumentMoniker": "Views\\StartView.xaml",
@@ -338,7 +343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "FrameSelectionView.g.i.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\obj\\Debug\\net8.0-windows\\Views\\FrameSelectionView.g.i.cs",
               "RelativeDocumentMoniker": "obj\\Debug\\net8.0-windows\\Views\\FrameSelectionView.g.i.cs",
@@ -350,7 +355,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -360,7 +365,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "SettingsWindow.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\SettingsWindow.xaml",
               "RelativeDocumentMoniker": "Views\\SettingsWindow.xaml",
@@ -371,7 +376,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "SettingsWindow.xaml.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Views\\SettingsWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\SettingsWindow.xaml.cs",
@@ -383,19 +388,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
               "ToolTip": "D:\\Csharp_learning\\Ambii\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-23T05:56:57.98Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T05:56:57.98Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "DarkMsg.cs",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\DarkMsg.cs",
               "RelativeDocumentMoniker": "DarkMsg.cs",
@@ -407,7 +411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": ".gitattributes",
               "DocumentMoniker": "D:\\Csharp_learning\\Ambii\\Photobooth_script\\.gitattributes",
               "RelativeDocumentMoniker": "Photobooth_script\\.gitattributes",
