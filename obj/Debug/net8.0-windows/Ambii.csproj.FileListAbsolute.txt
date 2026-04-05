@@ -64,7 +64,6 @@ E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.bam
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\FrameSelectionView.g.cs
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Ambii_MarkupCompile.lref
-E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Configs\frames_config.json
 D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Configs\Generic\frames_config.json
 D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Assets\Frames\ClassicStrip\Ambii_cut.png
 D:\Csharp_learning\Ambii\bin\Debug\net8.0-windows\Views\FrameSelectionView.xaml.cs
@@ -115,3 +114,16 @@ D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\refint\Ambii.dll
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.pdb
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\Ambii.genruntimeconfig.cache
 D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\ref\Ambii.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Configs\Generic\frames_config.json
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Views\FrameSelectionView.xaml.cs
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Assets\Frames\ClassicStrip\Ambii_cut.png
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Microsoft.Win32.SystemEvents.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\System.Drawing.Common.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\System.Private.Windows.Core.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\System.Private.Windows.GdiPlus.dll
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\CameraView.baml
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\PhotoSelectionView.baml
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\CameraView.g.cs
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\Views\PhotoSelectionView.g.cs
+E:\Photobooth script\Ambii\bin\Debug\net8.0-windows\Assets\Frames\ClassicStrip\gradi_frame.png

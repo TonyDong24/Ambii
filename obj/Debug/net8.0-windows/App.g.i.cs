@@ -49,7 +49,7 @@ namespace Ambii {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "9.0.0.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "10.0.4.0")]
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
@@ -75,7 +75,7 @@ namespace Ambii {
         /// </summary>
         [System.STAThreadAttribute()]
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "9.0.0.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "10.0.4.0")]
         public static void Main() {
             Ambii.App app = new Ambii.App();
             app.InitializeComponent();

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Csharp_learning\Ambii\obj\Debug\net8.0-windows\
+E:\Photobooth script\Ambii\obj\Debug\net8.0-windows\
 Ambii
 none
 false
-TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-D:\Csharp_learning\Ambii\App.xaml
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+E:\Photobooth script\Ambii\App.xaml
 6-776382388
-241660681670
+25-1588273551
 151466647827
-207-299135670
+207728775481
 MainWindow.xaml;Views\CameraView.xaml;Views\FrameSelectionView.xaml;Views\PhotoSelectionView.xaml;Views\SettingsWindow.xaml;Views\StartView.xaml;
 
 False

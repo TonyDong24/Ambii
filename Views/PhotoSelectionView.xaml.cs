@@ -45,9 +45,25 @@ namespace Ambii.Views
 
         private void ListFrames_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ListFrames.SelectedItem is FrameConfig selected)
+            if (e.AddedItems.Count > 0 && e.AddedItems[0] is FrameConfig selected)
             {
                 _service.SetCurrentFrame(selected);
+
+                // Debug nhanh xem nó có nhảy vào đây không
+                System.Diagnostics.Debug.WriteLine($"Đã chọn khung: {selected.Name}");
+            }
+        }
+        // THÊM HÀM NÀY VÀO TRONG CLASS
+        private void Frame_Click(object sender, MouseButtonEventArgs e)
+        {
+            var clickedFrame = (sender as FrameworkElement)?.DataContext as FrameConfig;
+            if (clickedFrame != null)
+            {
+                // Báo ra cửa sổ Output của Visual Studio để bạn biết chuột CÓ ĂN
+                System.Diagnostics.Debug.WriteLine($"[DEBUG] Đã ép click thành công vào khung: {clickedFrame.Name}");
+
+                // Gọi Service cập nhật
+                _service.SetCurrentFrame(clickedFrame);
             }
         }
     }

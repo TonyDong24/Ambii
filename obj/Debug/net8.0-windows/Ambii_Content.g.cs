@@ -32,5 +32,6 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("robotocondensed-regular.ttf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("configs/generic/frames_config.json")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/frames/classicstrip/ambii_cut.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/frames/classicstrip/gradi_frame.png")]
 
 

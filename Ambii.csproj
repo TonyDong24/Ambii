@@ -32,6 +32,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Resource Remove="Assets\Frames\ClassicStrip\gradi_frame.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Folder Include="Assets\Frames\PostCard4x6\" />
 	  <Folder Include="Assets\Frames\Special\" />
 	  <Folder Include="Configs\Special\" />

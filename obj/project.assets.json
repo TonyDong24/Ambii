@@ -532,23 +532,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tony_dong\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\pc\\.nuget\\packages\\": {},
+    "D:\\Application management\\Visual Studio\\Shared component\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Csharp_learning\\Ambii\\Ambii.csproj",
+      "projectUniqueName": "E:\\Photobooth script\\Ambii\\Ambii.csproj",
       "projectName": "Ambii",
-      "projectPath": "D:\\Csharp_learning\\Ambii\\Ambii.csproj",
-      "packagesPath": "C:\\Users\\tony_dong\\.nuget\\packages\\",
-      "outputPath": "D:\\Csharp_learning\\Ambii\\obj\\",
+      "projectPath": "E:\\Photobooth script\\Ambii\\Ambii.csproj",
+      "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+      "outputPath": "E:\\Photobooth script\\Ambii\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "D:\\Application management\\Visual Studio\\Shared component\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\tony_dong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -557,7 +557,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -576,7 +575,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -618,7 +617,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

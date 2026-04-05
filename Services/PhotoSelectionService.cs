@@ -26,14 +26,26 @@ namespace Ambii.Services
             foreach (var f in frames) AllFrames.Add(f);
         }
 
+        // Thêm vào PhotoSelectionService.cs
+        // ĐỔI 2 DÒNG NÀY ĐỂ VỪA CHỐNG NULL, VỪA CHỐNG SỐ 0
+        public double CurrentDisplayWidth;
+        public double CurrentDisplayHeight;
+
         public void SetCurrentFrame(FrameConfig config)
         {
+            if (config == null) return;
             _currentFrame = config;
             UpdatePreviewLayout();
-            OnPropertyChanged(nameof(SelectedFramePath)); // Để UI cập nhật cái khung viền
+
+            OnPropertyChanged(nameof(SelectedFramePath));
+            OnPropertyChanged(nameof(CurrentDisplayWidth));
+            OnPropertyChanged(nameof(CurrentDisplayHeight));
+
+            // In ra cửa sổ Output xem kích thước có bị 0 nữa không
+            System.Diagnostics.Debug.WriteLine($"[UI UPDATE] Ảnh: {SelectedFramePath} | Kích thước: {CurrentDisplayWidth}x{CurrentDisplayHeight}");
         }
 
-        
+
 
         public void LoadPhotos(List<string> paths)
         {
@@ -94,6 +106,7 @@ namespace Ambii.Services
             var selectedPhotos = AvailablePhotos.Where(p => p.Order > 0)
                                                  .OrderBy(p => p.Order).ToList();
 
+            // Duyệt theo số lượng Slot của khung MỚI
             for (int i = 0; i < _currentFrame.Slots.Count; i++)
             {
                 if (i < selectedPhotos.Count)
@@ -101,7 +114,7 @@ namespace Ambii.Services
                     PreviewSlots.Add(new
                     {
                         ImageSource = selectedPhotos[i].Thumbnail,
-                        Config = _currentFrame.Slots[i]
+                        Config = _currentFrame.Slots[i] // Tọa độ X, Y của khung mới
                     });
                 }
             }
@@ -127,15 +140,22 @@ namespace Ambii.Services
                     foreach (string file in files)
                     {
                         // Tạo "bản sao" từ khuôn gốc, chỉ thay đường dẫn ảnh (FramePath)
+                        // TÌM ĐẾN ĐOẠN NÀY TRONG HÀM LoadFramesFromFolder
                         AllFrames.Add(new FrameConfig
                         {
                             Id = baseConfig.Id,
-                            Name = Path.GetFileNameWithoutExtension(file), // Tên mẫu là tên file
-                            FramePath = new Uri(file).AbsoluteUri, // Quan trọng: Convert để WPF hiển thị được
+                            Name = Path.GetFileNameWithoutExtension(file),
+                            FramePath = new Uri(file).AbsoluteUri,
 
-                            // Giữ nguyên thông số kỹ thuật từ Generic JSON
                             CameraWidth = baseConfig.CameraWidth,
                             CameraHeight = baseConfig.CameraHeight,
+
+                            // 👇 THÊM 3 DÒNG NÀY VÀO CHỖ NÀY 👇
+                            DisplayWidth = baseConfig.DisplayWidth,
+                            DisplayHeight = baseConfig.DisplayHeight,
+                            DPI = baseConfig.DPI,
+                            // 👆 ---------------------------- 👆
+
                             Slots = baseConfig.Slots,
                             IsGeneric = true
                         });
@@ -162,6 +182,7 @@ namespace Ambii.Services
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
     }
 
     public class PhotoItem : INotifyPropertyChanged
